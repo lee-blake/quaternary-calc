@@ -84,5 +84,9 @@ public class QuaternaryNumber {
         return new QuaternaryNumber((int) Math.sqrt(this.decimalValue));
     }
 
+    public QuaternaryNumber squared(){
+        return this.times(this);
+    }
+
 
 }
