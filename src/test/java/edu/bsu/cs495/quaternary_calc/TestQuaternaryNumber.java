@@ -245,7 +245,7 @@ public class TestQuaternaryNumber {
 
 
     @Test
-    public void testSquareRootSquareInteger(){
+    public void testSquareRootSquareInteger() {
         QuaternaryNumber number = new QuaternaryNumber("10");
         QuaternaryNumber result = number.squareRoot();
         QuaternaryNumber expected = new QuaternaryNumber("2");
@@ -253,7 +253,7 @@ public class TestQuaternaryNumber {
     }
 
     @Test
-    public void testSquareRootRoundedInteger(){
+    public void testSquareRootRoundedInteger() {
         QuaternaryNumber number = new QuaternaryNumber("13");
         QuaternaryNumber result = number.squareRoot();
         QuaternaryNumber expected = new QuaternaryNumber("2");
@@ -261,7 +261,7 @@ public class TestQuaternaryNumber {
     }
 
     @Test
-    public void testSquareRootNegativeInteger(){
+    public void testSquareRootNegativeInteger() {
         QuaternaryNumber number = new QuaternaryNumber("-10");
         Assertions.assertThrows(ArithmeticException.class, number::squareRoot);
     }
@@ -269,7 +269,7 @@ public class TestQuaternaryNumber {
 
 
     @Test
-    public void testSquaredPositiveInteger(){
+    public void testSquaredPositiveInteger() {
         QuaternaryNumber number = new QuaternaryNumber("2");
         QuaternaryNumber results = number.squared();
         QuaternaryNumber expected = new QuaternaryNumber("10");
@@ -277,7 +277,7 @@ public class TestQuaternaryNumber {
     }
 
     @Test
-    public void testSquaredNegativeInteger(){
+    public void testSquaredNegativeInteger() {
         QuaternaryNumber number = new QuaternaryNumber("-10");
         QuaternaryNumber results = number.squared();
         QuaternaryNumber expected = new QuaternaryNumber("100");

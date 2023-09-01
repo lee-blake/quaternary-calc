@@ -69,22 +69,22 @@ public class QuaternaryNumber {
         return new QuaternaryNumber(this.decimalValue / otherNumber.decimalValue);
     }
 
-    public QuaternaryNumber plus(QuaternaryNumber otherNumber){
+    public QuaternaryNumber plus(QuaternaryNumber otherNumber) {
         return new QuaternaryNumber(this.decimalValue + otherNumber.decimalValue);
     }
 
-    public QuaternaryNumber minus(QuaternaryNumber otherNumber){
+    public QuaternaryNumber minus(QuaternaryNumber otherNumber) {
         return new QuaternaryNumber(this.decimalValue - otherNumber.decimalValue);
     }
 
-    public QuaternaryNumber squareRoot(){
-        if (decimalValue < 0){
+    public QuaternaryNumber squareRoot() {
+        if (decimalValue < 0) {
             throw new ArithmeticException();
         }
         return new QuaternaryNumber((int) Math.sqrt(this.decimalValue));
     }
 
-    public QuaternaryNumber squared(){
+    public QuaternaryNumber squared() {
         return this.times(this);
     }
 
