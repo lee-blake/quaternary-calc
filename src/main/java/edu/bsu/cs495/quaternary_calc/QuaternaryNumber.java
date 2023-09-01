@@ -53,6 +53,10 @@ public class QuaternaryNumber {
         return representation.toString();
     }
 
+    public String toDecimalForm() {
+        return String.valueOf(this.decimalValue);
+    }
+
     @Override
     public boolean equals(Object other) {
         if(other instanceof QuaternaryNumber otherNumber) {
@@ -87,6 +91,4 @@ public class QuaternaryNumber {
     public QuaternaryNumber squared() {
         return this.times(this);
     }
-
-
 }

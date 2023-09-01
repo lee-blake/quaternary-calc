@@ -103,6 +103,24 @@ public class TestQuaternaryNumber {
 
 
     @Test
+    public void testToDecimalFormZeroConvertsCorrectly() {
+        QuaternaryNumber zero = new QuaternaryNumber("0");
+        String actual = zero.toDecimalForm();
+        String expected = "0";
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testToDecimalFormElevenConvertsCorrectly() {
+        QuaternaryNumber eleven = new QuaternaryNumber("23");
+        String actual = eleven.toDecimalForm();
+        String expected = "11";
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+
+    @Test
     public void testTimesMultiplyByZeroReturnsZero() {
         QuaternaryNumber five = new QuaternaryNumber("11");
         QuaternaryNumber zero = new QuaternaryNumber("0");
