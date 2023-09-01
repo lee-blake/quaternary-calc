@@ -12,6 +12,10 @@ public class QuaternaryNumber {
         this.decimalValue = parseQuaternaryNumberFromString(quaternaryString);
     }
 
+    private QuaternaryNumber(int decimalValue) {
+        this.decimalValue = decimalValue;
+    }
+
     private void verifyStringIsAQuaternaryNumber(String possibleNumber) {
         Pattern pattern = Pattern.compile("^-?[0123]+$");
         Matcher matcher = pattern.matcher(possibleNumber);
@@ -55,5 +59,9 @@ public class QuaternaryNumber {
             return this.decimalValue == otherNumber.decimalValue;
         }
         return false;
+    }
+
+    public QuaternaryNumber times(QuaternaryNumber otherNumber) {
+        return new QuaternaryNumber(this.decimalValue * otherNumber.decimalValue);
     }
 }

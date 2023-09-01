@@ -99,4 +99,32 @@ public class TestQuaternaryNumber {
         QuaternaryNumber negative = new QuaternaryNumber("-1");
         Assertions.assertNotEquals(positive, negative);
     }
+
+
+
+    @Test
+    public void testTimesMultiplyByZeroReturnsZero() {
+        QuaternaryNumber five = new QuaternaryNumber("11");
+        QuaternaryNumber zero = new QuaternaryNumber("0");
+        QuaternaryNumber result = five.times(zero);
+        Assertions.assertEquals(result, zero);
+    }
+
+    @Test
+    public void testTimesMultiplyByTwoReturnsDouble() {
+        QuaternaryNumber seven = new QuaternaryNumber("13");
+        QuaternaryNumber two = new QuaternaryNumber("2");
+        QuaternaryNumber result = seven.times(two);
+        QuaternaryNumber expected = new QuaternaryNumber("32");
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    public void testTimesMultiplyByNegativeNumberReturnsCorrectly() {
+        QuaternaryNumber negativeFive = new QuaternaryNumber("-11");
+        QuaternaryNumber negativeThree = new QuaternaryNumber("-3");
+        QuaternaryNumber result = negativeFive.times(negativeThree);
+        QuaternaryNumber expected = new QuaternaryNumber("33");
+        Assertions.assertEquals(expected, result);
+    }
 }
