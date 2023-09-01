@@ -29,9 +29,10 @@ public class CalcGUITest {
         JButton divButton = new JButton("/");
         JButton sqButton = new JButton("sq");
         JButton sqrtButton = new JButton("sqrt");
+        JButton enterButton = new JButton("enter");
 
 
-        //intialize button panel
+        //initialize button panel
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(4, 3));
 
@@ -46,11 +47,16 @@ public class CalcGUITest {
         buttonPanel.add(divButton);
         buttonPanel.add(sqButton);
         buttonPanel.add(sqrtButton);
+        buttonPanel.add(enterButton);
+
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.add(textArea1, BorderLayout.NORTH);
+        frame.add(buttonPanel, BorderLayout.CENTER);
         frame.setSize(600, 400);
         frame.setVisible(true);
+
     }
+    
 }
