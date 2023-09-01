@@ -137,8 +137,10 @@ public class TestQuaternaryNumber {
         Assertions.assertEquals(expected,result);
     }
 
+
+
     @Test
-    public void testPlusNegativeFirstAddition() {
+    public void testPlusNegativePositiveAddition() {
         QuaternaryNumber first = new QuaternaryNumber("-12");
         QuaternaryNumber second = new QuaternaryNumber("13");
         QuaternaryNumber result = first.plus(second);
@@ -147,7 +149,7 @@ public class TestQuaternaryNumber {
     }
 
     @Test
-    public void testPlusNegativeSecondAddition() {
+    public void testPlusPositiveNegativeAddition() {
         QuaternaryNumber first = new QuaternaryNumber("13");
         QuaternaryNumber second = new QuaternaryNumber("-11");
         QuaternaryNumber result = first.plus(second);
@@ -164,8 +166,10 @@ public class TestQuaternaryNumber {
         Assertions.assertEquals(expected,result);
     }
 
+
+
     @Test
-    public void testMinusPositiveSubtraction() {
+    public void testMinusBothPositiveSubtraction() {
         QuaternaryNumber first = new QuaternaryNumber("2");
         QuaternaryNumber second = new QuaternaryNumber("1");
         QuaternaryNumber result = first.minus(second);
@@ -174,7 +178,7 @@ public class TestQuaternaryNumber {
     }
 
     @Test
-    public void testMinusNegativeFirstSubtraction() {
+    public void testMinusNegativePositiveSubtraction() {
         QuaternaryNumber first = new QuaternaryNumber("-10");
         QuaternaryNumber second = new QuaternaryNumber("1");
         QuaternaryNumber result = first.minus(second);
@@ -183,7 +187,7 @@ public class TestQuaternaryNumber {
     }
 
     @Test
-    public void testMinusNegativeSecondSubtraction() {
+    public void testMinusPositiveNegativeSubtraction() {
         QuaternaryNumber first = new QuaternaryNumber("22");
         QuaternaryNumber second = new QuaternaryNumber("-2");
         QuaternaryNumber result = first.minus(second);
