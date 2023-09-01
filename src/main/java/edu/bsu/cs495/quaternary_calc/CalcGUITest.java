@@ -6,9 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CalcGUITest {
-    private double operand1;
-    private double operand2;
-    private String operator;
 
     public CalcGUITest(){
 
@@ -58,5 +55,7 @@ public class CalcGUITest {
         frame.setVisible(true);
 
     }
-    
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(CalcGUITest::new);
+    }
 }
