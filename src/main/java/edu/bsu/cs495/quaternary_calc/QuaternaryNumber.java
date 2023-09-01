@@ -39,10 +39,10 @@ public class QuaternaryNumber {
     public String toString() {
         StringBuilder representation = new StringBuilder();
         int remainingValue = Math.abs(decimalValue);
-        while(remainingValue != 0) {
+        do {
             representation.insert(0, remainingValue % 4);
             remainingValue /= 4;
-        }
+        } while(remainingValue != 0);
         if(decimalValue < 0) {
             representation.insert(0, "-");
         }

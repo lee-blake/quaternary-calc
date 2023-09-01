@@ -46,6 +46,16 @@ public class TestQuaternaryNumber {
         Assertions.assertEquals(constructorString, actual);
     }
 
+    @Test
+    public void testConstructorToStringZeroDisplaysCorrectly() {
+        QuaternaryNumber zero = new QuaternaryNumber("0");
+        String actual = zero.toString();
+        String expected = "0";
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+
     // This is testing that incomparable types due result in 'false' - which is intended behavior in Java.
     @SuppressWarnings("AssertBetweenInconvertibleTypes")
     @Test
