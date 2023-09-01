@@ -128,6 +128,8 @@ public class TestQuaternaryNumber {
         Assertions.assertEquals(expected, result);
     }
 
+
+
     @Test
     public void testPlusPositiveAddition() {
         QuaternaryNumber first = new QuaternaryNumber("1");
@@ -136,8 +138,6 @@ public class TestQuaternaryNumber {
         QuaternaryNumber expected = new QuaternaryNumber("3");
         Assertions.assertEquals(expected,result);
     }
-
-
 
     @Test
     public void testPlusNegativePositiveAddition() {
