@@ -127,4 +127,40 @@ public class TestQuaternaryNumber {
         QuaternaryNumber expected = new QuaternaryNumber("33");
         Assertions.assertEquals(expected, result);
     }
+
+    @Test
+    public void testPlusPositiveAddition() {
+        QuaternaryNumber first = new QuaternaryNumber("1");
+        QuaternaryNumber second = new QuaternaryNumber("2");
+        QuaternaryNumber result = first.plus(second);
+        QuaternaryNumber expected = new QuaternaryNumber("3");
+        Assertions.assertEquals(expected,result);
+    }
+
+    @Test
+    public void testPlusNegativeFirstAddition() {
+        QuaternaryNumber first = new QuaternaryNumber("-12");
+        QuaternaryNumber second = new QuaternaryNumber("13");
+        QuaternaryNumber result = first.plus(second);
+        QuaternaryNumber expected = new QuaternaryNumber("1");
+        Assertions.assertEquals(expected,result);
+    }
+
+    @Test
+    public void testPlusNegativeSecondAddition() {
+        QuaternaryNumber first = new QuaternaryNumber("13");
+        QuaternaryNumber second = new QuaternaryNumber("-11");
+        QuaternaryNumber result = first.plus(second);
+        QuaternaryNumber expected = new QuaternaryNumber("2");
+        Assertions.assertEquals(expected,result);
+    }
+
+    @Test
+    public void testPlusBothNegativeAddition() {
+        QuaternaryNumber first = new QuaternaryNumber("-21");
+        QuaternaryNumber second = new QuaternaryNumber("-3");
+        QuaternaryNumber result = first.plus(second);
+        QuaternaryNumber expected = new QuaternaryNumber("-30");
+        Assertions.assertEquals(expected,result);
+    }
 }

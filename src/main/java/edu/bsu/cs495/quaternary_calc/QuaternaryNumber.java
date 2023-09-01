@@ -64,4 +64,8 @@ public class QuaternaryNumber {
     public QuaternaryNumber times(QuaternaryNumber otherNumber) {
         return new QuaternaryNumber(this.decimalValue * otherNumber.decimalValue);
     }
+
+    public QuaternaryNumber plus(QuaternaryNumber otherNumber){
+        return new QuaternaryNumber(this.decimalValue + otherNumber.decimalValue);
+    }
 }
