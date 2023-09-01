@@ -241,4 +241,26 @@ public class TestQuaternaryNumber {
         QuaternaryNumber expected = new QuaternaryNumber("20");
         Assertions.assertEquals(expected,result);
     }
+
+    @Test
+    public void testSquareRootInteger(){
+        QuaternaryNumber number = new QuaternaryNumber("10");
+        QuaternaryNumber result = number.squareRoot();
+        QuaternaryNumber expected = new QuaternaryNumber("2");
+        Assertions.assertEquals(expected,result);
+    }
+
+    @Test
+    public void testSquareRootRoundedInteger(){
+        QuaternaryNumber number = new QuaternaryNumber("13");
+        QuaternaryNumber result = number.squareRoot();
+        QuaternaryNumber expected = new QuaternaryNumber("2");
+        Assertions.assertEquals(expected,result);
+    }
+
+    @Test
+    public void testSquareRootNegativeInteger(){
+        QuaternaryNumber number = new QuaternaryNumber("-10");
+        Assertions.assertThrows(ArithmeticException.class, number::squareRoot);
+    }
 }

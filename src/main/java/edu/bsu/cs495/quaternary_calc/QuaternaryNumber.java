@@ -77,5 +77,12 @@ public class QuaternaryNumber {
         return new QuaternaryNumber(this.decimalValue - otherNumber.decimalValue);
     }
 
+    public QuaternaryNumber squareRoot(){
+        if (decimalValue < 0){
+            throw new ArithmeticException();
+        }
+        return new QuaternaryNumber((int) Math.sqrt(this.decimalValue));
+    }
+
 
 }
