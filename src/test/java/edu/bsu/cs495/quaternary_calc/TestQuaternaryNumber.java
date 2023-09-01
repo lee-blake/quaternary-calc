@@ -131,6 +131,44 @@ public class TestQuaternaryNumber {
 
 
     @Test
+    public void testDividedByDivisionByOneReturnsIdentity() {
+        QuaternaryNumber seven = new QuaternaryNumber("13");
+        QuaternaryNumber one = new QuaternaryNumber("1");
+        QuaternaryNumber result = seven.dividedBy(one);
+        Assertions.assertEquals(seven, result);
+    }
+
+    @Test
+    public void testDividedByDivisionByNegativeTwoReturnsCorrectly() {
+        QuaternaryNumber eight = new QuaternaryNumber("20");
+        QuaternaryNumber negativeTwo = new QuaternaryNumber("-2");
+        QuaternaryNumber actual = eight.dividedBy(negativeTwo);
+        QuaternaryNumber expected = new QuaternaryNumber("-10");
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testDividedByDivisionFractionalAnswerRoundsDown() {
+        QuaternaryNumber ten = new QuaternaryNumber("22");
+        QuaternaryNumber three = new QuaternaryNumber("3");
+        QuaternaryNumber actual = ten.dividedBy(three);
+        QuaternaryNumber expected = new QuaternaryNumber("3");
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testDividedByDivisionByZeroThrowsException() {
+        QuaternaryNumber ten = new QuaternaryNumber("22");
+        QuaternaryNumber zero = new QuaternaryNumber("0");
+        Assertions.assertThrows(
+                ArithmeticException.class,
+                () -> ten.dividedBy(zero)
+        );
+    }
+
+
+
+    @Test
     public void testPlusPositiveAddition() {
         QuaternaryNumber first = new QuaternaryNumber("1");
         QuaternaryNumber second = new QuaternaryNumber("2");

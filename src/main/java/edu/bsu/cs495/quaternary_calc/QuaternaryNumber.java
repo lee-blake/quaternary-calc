@@ -65,6 +65,10 @@ public class QuaternaryNumber {
         return new QuaternaryNumber(this.decimalValue * otherNumber.decimalValue);
     }
 
+    public QuaternaryNumber dividedBy(QuaternaryNumber otherNumber) {
+        return new QuaternaryNumber(this.decimalValue / otherNumber.decimalValue);
+    }
+
     public QuaternaryNumber plus(QuaternaryNumber otherNumber){
         return new QuaternaryNumber(this.decimalValue + otherNumber.decimalValue);
     }
@@ -72,4 +76,6 @@ public class QuaternaryNumber {
     public QuaternaryNumber minus(QuaternaryNumber otherNumber){
         return new QuaternaryNumber(this.decimalValue - otherNumber.decimalValue);
     }
+
+
 }
