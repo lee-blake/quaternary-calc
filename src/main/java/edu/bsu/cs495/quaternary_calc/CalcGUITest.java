@@ -11,7 +11,31 @@ public class CalcGUITest {
     {
         //initializing window and buttons
         JFrame frame = new JFrame("Quaternary Calculator");
-        TextArea textArea1 = new TextArea();
+        JTextArea textArea1 = new JTextArea();
+        JTextArea textArea2 = new JTextArea("PlaceHolder Text");
+
+        //"Base 10" and "Base 4" Text
+        JTextArea base10Label = new JTextArea("Base 10:");
+        JTextArea base4Label = new JTextArea("Base 4:");
+
+        base10Label.setEditable(false);
+        base4Label.setEditable(false);
+
+        base10Label.setBackground(null);
+        base4Label.setBackground(null);
+
+        base10Label.setForeground(Color.BLACK);
+        base4Label.setForeground(Color.LIGHT_GRAY);
+
+        JPanel textAreaPanel = new JPanel(new GridLayout(2, 2));
+        textAreaPanel.add(base10Label);
+        textAreaPanel.add(textArea1);
+        textAreaPanel.add(base4Label);
+        textAreaPanel.add(textArea2);
+
+        //Set Colors
+        textArea1.setForeground(Color.BLACK);
+        textArea2.setForeground(Color.LIGHT_GRAY);
 
         //initialize number buttons
         JButton zeroButton = new JButton("0");
@@ -72,7 +96,7 @@ public class CalcGUITest {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
-        frame.add(textArea1, BorderLayout.NORTH);
+        frame.add(textAreaPanel, BorderLayout.NORTH);
         frame.add(buttonPanel, BorderLayout.CENTER);
         frame.setSize(600, 400);
         frame.setVisible(true);
@@ -90,9 +114,16 @@ public class CalcGUITest {
         sqButton.addActionListener(e -> textArea1.append(" sq "));
         sqrtButton.addActionListener(e -> textArea1.append(" sqrt "));
 
-        enterButton.addActionListener(e -> textArea1.append(" = "));
+        flipButton.addActionListener(e -> {
+            //flip font colors
+            Color tempColor = textArea1.getForeground();
+            textArea1.setForeground(textArea2.getForeground());
+            textArea2.setForeground(tempColor);
 
-        flipButton.addActionListener(e -> textArea1.append("0"));
+            tempColor = base10Label.getForeground();
+            base10Label.setForeground(base4Label.getForeground());
+            base4Label.setForeground(tempColor);
+        });
 
         backspaceButton.addActionListener(e -> {
             String currentText = textArea1.getText();
@@ -101,8 +132,60 @@ public class CalcGUITest {
             }
         });
 
-        clearButton.addActionListener(e -> textArea1.setText(""));
+        //Handle Disabling Operators:
 
+        JButton[] operatorButtons = {addButton, subButton, mulButton, divButton, sqButton, sqrtButton};
+
+        final boolean[] operatorPressed = {false};
+
+        ActionListener disableOperatorButtons = e -> {
+            if (!operatorPressed[0]) {
+                operatorPressed[0] = true;
+                for (JButton button : operatorButtons) {
+                    button.setEnabled(false);
+                }
+            }
+        };
+
+        addButton.addActionListener(disableOperatorButtons);
+        subButton.addActionListener(disableOperatorButtons);
+        mulButton.addActionListener(disableOperatorButtons);
+        divButton.addActionListener(disableOperatorButtons);
+        sqButton.addActionListener(disableOperatorButtons);
+        sqrtButton.addActionListener(disableOperatorButtons);
+
+        final boolean[] enterPressed = {false};
+
+        enterButton.addActionListener(e -> {
+            textArea1.append(" = ");
+            enterPressed[0] = true;
+            // Disable all buttons
+            for (JButton button : operatorButtons) {
+                button.setEnabled(false);
+            }
+            zeroButton.setEnabled(false);
+            oneButton.setEnabled(false);
+            twoButton.setEnabled(false);
+            threeButton.setEnabled(false);
+            backspaceButton.setEnabled(false);
+            enterButton.setEnabled(false);
+        });
+
+
+        clearButton.addActionListener(e -> {
+            textArea1.setText("");
+            operatorPressed[0] = false;
+            enterPressed[0] = false;
+            for (JButton button : operatorButtons) {
+                button.setEnabled(true);
+            }
+            zeroButton.setEnabled(true);
+            oneButton.setEnabled(true);
+            twoButton.setEnabled(true);
+            threeButton.setEnabled(true);
+            backspaceButton.setEnabled(true);
+            enterButton.setEnabled(true);
+        });
     }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(CalcGUITest::new);
