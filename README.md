@@ -6,10 +6,13 @@ Meeting 1:
 LB 404
 Jalen, Lee, Noah, Beethoven
 
-9-1-2023 Task Distribution: 
+9-1-2023 Initial Task Distribution: 
 Jalen and Lee = Representation Backend
 Noah and Beethoven = Calculator GUI
 
+9-1-2023 Closing Tasks Distribution:
+Beethoven: Organize GUI buttons into rows
+Lee: Draft middleware specifications
 
 
 
