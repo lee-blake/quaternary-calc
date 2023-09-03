@@ -76,6 +76,33 @@ public class CalcGUITest {
         frame.add(buttonPanel, BorderLayout.CENTER);
         frame.setSize(600, 400);
         frame.setVisible(true);
+
+        //set up button presses to append to text area
+        zeroButton.addActionListener(e -> textArea1.append("0"));
+        oneButton.addActionListener(e -> textArea1.append("1"));
+        twoButton.addActionListener(e -> textArea1.append("2"));
+        threeButton.addActionListener(e -> textArea1.append("3"));
+
+        addButton.addActionListener(e -> textArea1.append(" + "));
+        subButton.addActionListener(e -> textArea1.append(" - "));
+        mulButton.addActionListener(e -> textArea1.append(" * "));
+        divButton.addActionListener(e -> textArea1.append(" / "));
+        sqButton.addActionListener(e -> textArea1.append(" sq "));
+        sqrtButton.addActionListener(e -> textArea1.append(" sqrt "));
+
+        enterButton.addActionListener(e -> textArea1.append(" = "));
+
+        flipButton.addActionListener(e -> textArea1.append("0"));
+
+        backspaceButton.addActionListener(e -> {
+            String currentText = textArea1.getText();
+            if (currentText.length() > 0) {
+                textArea1.setText(currentText.substring(0, currentText.length() - 1));
+            }
+        });
+
+        clearButton.addActionListener(e -> textArea1.setText(""));
+
     }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(CalcGUITest::new);
