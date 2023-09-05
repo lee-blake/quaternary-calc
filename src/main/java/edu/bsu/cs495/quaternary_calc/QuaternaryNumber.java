@@ -93,25 +93,4 @@ public class QuaternaryNumber {
         return this.times(this);
     }
 
-    public enum BinaryOperator {
-        ADDITION("+"),
-        SUBTRACTION("-"),
-        MULTIPLICATION("*"),
-        DIVISION("/"),
-        SQUARED("**"),
-        SQUAREROOT("Math.sqrt()");
-
-        private final String symbol;
-
-        BinaryOperator(String symbol) {
-            this.symbol = symbol;
-        }
-
-        @Override
-        public String toString() {
-            return symbol;
-        }
-
-    }
-
 }
