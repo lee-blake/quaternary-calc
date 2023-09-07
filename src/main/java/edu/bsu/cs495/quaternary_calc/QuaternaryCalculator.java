@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class QuaternaryCalculator {
 
-    private final ArrayList<QuaternaryNumber> operands = new ArrayList<>();
-    private final ArrayList<BinaryOperator> operators = new ArrayList<>();
+    final ArrayList<QuaternaryNumber> operands = new ArrayList<>();
+    final ArrayList<BinaryOperator> operators = new ArrayList<>();
 
     public void submitBinaryOperation(QuaternaryNumber leftOperand, BinaryOperator operator) {
         operands.add(leftOperand);
@@ -49,4 +49,11 @@ public class QuaternaryCalculator {
             default -> throw new IllegalArgumentException("The operator has not be implemented!");
         }
     }
+
+    /*
+     * private void replaceLastBinaryOperation(QuaternaryCalculator.BinaryOperator
+     * operator) {
+     * 
+     * }
+     */
 }
