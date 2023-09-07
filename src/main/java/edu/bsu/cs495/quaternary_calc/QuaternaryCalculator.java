@@ -12,6 +12,11 @@ public class QuaternaryCalculator {
         operators.add(operator);
     }
 
+    public void submitBinaryOperation() {
+        // This method is currently empty
+        // placeholder i guess
+    }
+
     // clears operators and operands array list
     public void reset() {
         operands.clear();
