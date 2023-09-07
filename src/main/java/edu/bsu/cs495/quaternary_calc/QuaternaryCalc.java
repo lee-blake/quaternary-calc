@@ -15,8 +15,8 @@ public class QuaternaryCalc {
 
     // int quat_num = new QuaternaryNumber(null);
 
-    QuaternaryNumber qn1 = new QuaternaryNumber();
-    QuaternaryNumber qn2 = new QuaternaryNumber();
+    QuaternaryNumber qn1 = new QuaternaryNumber("1");
+    QuaternaryNumber qn2 = new QuaternaryNumber("2");
     // below is placeholder
     String expressionSymbol = "";
 
