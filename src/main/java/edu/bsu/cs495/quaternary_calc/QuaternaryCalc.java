@@ -20,26 +20,6 @@ public class QuaternaryCalc {
     // below is placeholder
     String expressionSymbol = "";
 
-    public enum BinaryOperator {
-        ADDITION("+"),
-        SUBTRACTION("-"),
-        MULTIPLICATION("*"),
-        DIVISION("/"),
-        SQUARED("**"),
-        SQUAREROOT("Math.sqrt()");
-
-        private final String symbol;
-
-        BinaryOperator(String symbol) {
-            this.symbol = symbol;
-        }
-
-        @Override
-        public String toString() {
-            return symbol;
-        }
-
-    }
 
     public void submitBinaryOperation() {
         // placeholder
