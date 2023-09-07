@@ -23,6 +23,10 @@ public class QuaternaryCalculator {
         // placeholder
     }
 
+    public QuaternaryNumber evaluateIgnoringLastOperation() {
+        return new QuaternaryNumber("0");
+    }
+
     /*
      * private double operatorExecution(double a, double b,
      * QuaternaryCalc.BinaryOperator operator) {
