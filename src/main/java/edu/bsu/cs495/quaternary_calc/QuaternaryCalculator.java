@@ -2,12 +2,10 @@
 
 package edu.bsu.cs495.quaternary_calc;
 
-import javax.swing.*;
-import java.awt.*;
 //import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class QuaternaryCalc {
+
+public class QuaternaryCalculator {
 
     public void getString() {
         // placeholder to get the string from gui
