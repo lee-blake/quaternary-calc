@@ -1,10 +1,10 @@
 package edu.bsu.cs495.quaternary_calc;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestQuaternaryCalculator {
 
@@ -82,18 +82,77 @@ public class TestQuaternaryCalculator {
                                 new QuaternaryNumber("2"),
                                 BinaryOperator.MULTIPLICATION);
                 calculator.submitBinaryOperation(
-                                new QuaternaryNumber("11"),
-                                BinaryOperator.DIVISION);
+                        new QuaternaryNumber("11"),
+                        BinaryOperator.DIVISION);
                 calculator.submitBinaryOperation(
-                                new QuaternaryNumber("2"),
-                                BinaryOperator.DIVISION);
+                        new QuaternaryNumber("2"),
+                        BinaryOperator.DIVISION);
                 QuaternaryNumber actual = calculator.evaluateIgnoringLastOperation();
                 QuaternaryNumber expected = new QuaternaryNumber("101");
                 Assertions.assertEquals(expected, actual);
         }
 
-        @Test
 
+        @Test
+        public void testEvaluateEmptyCalculatorReturnsPassedValue() {
+                QuaternaryCalculator calculator = new QuaternaryCalculator();
+                QuaternaryNumber actual = calculator.evaluate(new QuaternaryNumber("101"));
+                QuaternaryNumber expected = new QuaternaryNumber("101");
+                Assertions.assertEquals(expected, actual);
+        }
+
+        @Test
+        public void testEvaluateSingleSubmissionAdditionAddsBothValues() {
+                QuaternaryCalculator calculator = new QuaternaryCalculator();
+                calculator.submitBinaryOperation(
+                        new QuaternaryNumber("3"),
+                        BinaryOperator.ADDITION
+                );
+                QuaternaryNumber actual = calculator.evaluate(new QuaternaryNumber("11"));
+                QuaternaryNumber expected = new QuaternaryNumber("20");
+                Assertions.assertEquals(expected, actual);
+        }
+
+        @Test
+        public void testEvaluateSingleSubmissionSubtractionSubtractsInCorrectOrder() {
+                QuaternaryCalculator calculator = new QuaternaryCalculator();
+                calculator.submitBinaryOperation(
+                        new QuaternaryNumber("13"),
+                        BinaryOperator.SUBTRACTION
+                );
+                QuaternaryNumber actual = calculator.evaluate(new QuaternaryNumber("2"));
+                QuaternaryNumber expected = new QuaternaryNumber("11");
+                Assertions.assertEquals(expected, actual);
+        }
+
+        @Test
+        public void testEvaluateSequenceOfAllOperatorsReturnsCorrectly() {
+                // In decimal, this will be 2-1+7/2*3 and should return 12 if using the classical calculator
+                // approach of "greedy" application of operations and this assignment's integer division
+                QuaternaryCalculator calculator = new QuaternaryCalculator();
+                calculator.submitBinaryOperation(
+                        new QuaternaryNumber("2"),
+                        BinaryOperator.SUBTRACTION
+                );
+                calculator.submitBinaryOperation(
+                        new QuaternaryNumber("1"),
+                        BinaryOperator.ADDITION
+                );
+                calculator.submitBinaryOperation(
+                        new QuaternaryNumber("13"),
+                        BinaryOperator.DIVISION
+                );
+                calculator.submitBinaryOperation(
+                        new QuaternaryNumber("2"),
+                        BinaryOperator.MULTIPLICATION
+                );
+                QuaternaryNumber actual = calculator.evaluate(new QuaternaryNumber("3"));
+                QuaternaryNumber expected = new QuaternaryNumber("30");
+                Assertions.assertEquals(expected, actual);
+        }
+
+
+        @Test
         public void testClear() {
                 // testing clear function
                 QuaternaryCalculator calculator = new QuaternaryCalculator();

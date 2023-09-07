@@ -52,6 +52,20 @@ public class QuaternaryCalculator {
         }
     }
 
+    public QuaternaryNumber evaluate(QuaternaryNumber lastOperand) {
+        if (operands.size() == 0) {
+            return lastOperand;
+        }
+        QuaternaryNumber subtotalIgnoringLastOperation = this.evaluateIgnoringLastOperation();
+        BinaryOperator lastOperator = operators.get(operators.size() - 1);
+        return performOperation(
+                subtotalIgnoringLastOperation,
+                lastOperator,
+                lastOperand
+        );
+    }
+
+
     public void replaceLastBinaryOperation(BinaryOperator optr) {
         if (operators.isEmpty()) {
             throw new IllegalStateException("No binary operations to replace");
