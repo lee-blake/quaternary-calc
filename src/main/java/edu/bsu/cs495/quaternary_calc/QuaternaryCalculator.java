@@ -50,10 +50,11 @@ public class QuaternaryCalculator {
         }
     }
 
-    /*
-     * private void replaceLastBinaryOperation(QuaternaryCalculator.BinaryOperator
-     * operator) {
-     * 
-     * }
-     */
+    public void replaceLastBinaryOperation(BinaryOperator optr) {
+        if (operators.isEmpty()) {
+            throw new IllegalStateException("No binary operations to replace");
+        }
+        operators.set(operators.size() - 1, optr);
+    }
+
 }
