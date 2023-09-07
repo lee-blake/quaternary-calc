@@ -7,14 +7,10 @@ public class QuaternaryCalculator {
     final ArrayList<QuaternaryNumber> operands = new ArrayList<>();
     final ArrayList<BinaryOperator> operators = new ArrayList<>();
 
+    // define operations in controller
     public void submitBinaryOperation(QuaternaryNumber leftOperand, BinaryOperator operator) {
         operands.add(leftOperand);
         operators.add(operator);
-    }
-
-    public void submitBinaryOperation() {
-        // This method is currently empty
-        // placeholder i guess
     }
 
     // clears operators and operands array list
@@ -23,6 +19,7 @@ public class QuaternaryCalculator {
         operators.clear();
     }
 
+    // evaluation of given expression ignoring last operator symbol
     public QuaternaryNumber evaluateIgnoringLastOperation() {
         if (operands.isEmpty()) {
             return new QuaternaryNumber("0");

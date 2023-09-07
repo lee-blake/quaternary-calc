@@ -1,5 +1,8 @@
 package edu.bsu.cs495.quaternary_calc;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -98,6 +101,31 @@ public class TestQuaternaryCalculator {
                 calculator.operators.add(BinaryOperator.ADDITION);
                 calculator.reset();
 
+        }
+
+        @Test
+        public void testReplaceLastBinaryOperation() {
+                QuaternaryCalculator calculator = new QuaternaryCalculator();
+                // Add some operators to the calculator
+                BinaryOperator operator1 = BinaryOperator.ADDITION;
+                BinaryOperator operator2 = BinaryOperator.SUBTRACTION;
+                BinaryOperator operator3 = BinaryOperator.MULTIPLICATION;
+                calculator.operators.add(operator1);
+                calculator.operators.add(operator2);
+
+                // Call the replaceLastBinaryOperation method with a new operator
+                calculator.replaceLastBinaryOperation(operator3);
+
+                // Check if the last operator in the list has been replaced with the new
+                // operator
+                assertEquals(operator3, calculator.operators.get(calculator.operators.size() - 1),
+                                "Last operator should be replaced");
+
+                // Test the case when the operators list is empty and expect an
+                // IllegalStateException
+                calculator.reset();
+                assertThrows(IllegalStateException.class, () -> calculator.replaceLastBinaryOperation(operator1),
+                                "Should throw IllegalStateException when no binary operations to replace");
         }
 
 }
