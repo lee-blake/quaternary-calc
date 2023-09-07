@@ -4,13 +4,18 @@ import java.util.ArrayList;
 
 public class QuaternaryCalculator {
 
-
     private final ArrayList<QuaternaryNumber> operands = new ArrayList<>();
     private final ArrayList<BinaryOperator> operators = new ArrayList<>();
 
     public void submitBinaryOperation(QuaternaryNumber leftOperand, BinaryOperator operator) {
         operands.add(leftOperand);
         operators.add(operator);
+    }
+
+    // clears operators and operands array list
+    public void reset() {
+        operands.clear();
+        operators.clear();
     }
 
     public QuaternaryNumber evaluateIgnoringLastOperation() {
@@ -27,7 +32,7 @@ public class QuaternaryCalculator {
     }
 
     private QuaternaryNumber performOperation(QuaternaryNumber leftOperand, BinaryOperator operator,
-                                              QuaternaryNumber rightOperand) {
+            QuaternaryNumber rightOperand) {
         switch (operator) {
             case ADDITION -> {
                 return leftOperand.plus(rightOperand);
