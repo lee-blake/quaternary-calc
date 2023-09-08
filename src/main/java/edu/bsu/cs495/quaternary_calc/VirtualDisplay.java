@@ -8,6 +8,7 @@ public class VirtualDisplay {
     private String keyboardBuffer = "0";
     private boolean lastKeyPressedWasBinaryOperator = false;
 
+    private boolean displayNaN = false;
     private QuaternaryNumber displayValue = new QuaternaryNumber("0");
     private boolean displayBase10 = false;
 
@@ -31,13 +32,19 @@ public class VirtualDisplay {
 
     private void updateDisplayValue() {
         displayValue = new QuaternaryNumber(keyboardBuffer);
+        displayNaN = false;
     }
 
     public void pressUnaryOperator(UnaryOperator operator) {
         if (operator == UnaryOperator.SQUARE) {
             displayValue = displayValue.squared();
-        } else {
-            displayValue = displayValue.squareRoot();
+        }
+        else {
+            try {
+                displayValue = displayValue.squareRoot();
+            } catch (ArithmeticException e) {
+                displayNaN = true;
+            }
         }
         clearTypedInputButKeepDisplay();
         lastKeyPressedWasBinaryOperator = false;
@@ -53,14 +60,19 @@ public class VirtualDisplay {
             calculator.submitBinaryOperation(displayValue, operator);
             lastKeyPressedWasBinaryOperator = true;
             binaryOperatorInCalculator = true;
-        } else if (lastKeyPressedWasBinaryOperator) {
+        }
+        else if (lastKeyPressedWasBinaryOperator) {
             calculator.replaceLastBinaryOperation(operator);
         }
     }
 
     public void pressEnter() {
         clearTypedInputButKeepDisplay();
-        displayValue = calculator.evaluate(displayValue);
+        try {
+            displayValue = calculator.evaluate(displayValue);
+        } catch (ArithmeticException e) {
+            displayNaN = true;
+        }
         calculator.reset();
         lastKeyPressedWasBinaryOperator = false;
         binaryOperatorInCalculator = false;
@@ -70,7 +82,8 @@ public class VirtualDisplay {
         int bufferLength = keyboardBuffer.length();
         if (bufferLength == 1) {
             keyboardBuffer = "0";
-        } else {
+        }
+        else {
             keyboardBuffer = keyboardBuffer.substring(0, bufferLength - 1);
         }
         updateDisplayValue();
@@ -94,9 +107,13 @@ public class VirtualDisplay {
     }
 
     public String getDisplayString() {
-        if (displayBase10) {
+        if (displayNaN) {
+            return "NaN";
+        }
+        else if (displayBase10) {
             return displayValue.toDecimalForm();
-        } else {
+        }
+        else {
             return displayValue.toString();
         }
     }

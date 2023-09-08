@@ -135,6 +135,19 @@ public class TestVirtualDisplay {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void testPressUnaryOperatorArithmeticErrorDisplaysNaN() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.pressDigit("1");
+        display.pressBinaryOperator(BinaryOperator.SUBTRACTION);
+        display.pressDigit("2");
+        display.pressEnter();
+        display.pressUnaryOperator(UnaryOperator.SQUARE_ROOT);
+        String actual = display.getDisplayString();
+        String expected = "NaN";
+        Assertions.assertEquals(expected, actual);
+    }
+
 
     @Test
     public void testClearEntryClearsEntry() {
@@ -232,6 +245,18 @@ public class TestVirtualDisplay {
         display.pressEnter();
         String actual = display.getDisplayString();
         String expected = "10";
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testPressEnterArithmeticErrorDisplaysNan() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.pressDigit("1");
+        display.pressBinaryOperator(BinaryOperator.DIVISION);
+        display.pressDigit("0");
+        display.pressEnter();
+        String actual = display.getDisplayString();
+        String expected = "NaN";
         Assertions.assertEquals(expected, actual);
     }
 
