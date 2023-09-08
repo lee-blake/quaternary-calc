@@ -6,13 +6,15 @@ import java.util.regex.Pattern;
 public class VirtualDisplay {
 
     private String keyboardBuffer = "0";
-    private QuaternaryNumber displayValue = new QuaternaryNumber("0");
-    private boolean displayBase10 = false;
-    private final QuaternaryCalculator calculator = new QuaternaryCalculator();
-    private boolean binaryOperatorInCalculator = false;
     private boolean lastKeyPressedWasBinaryOperator = false;
 
-    public void typeDigit(String digit) {
+    private QuaternaryNumber displayValue = new QuaternaryNumber("0");
+    private boolean displayBase10 = false;
+
+    private final QuaternaryCalculator calculator = new QuaternaryCalculator();
+    private boolean binaryOperatorInCalculator = false;
+
+    public void pressDigit(String digit) {
         verifyDigitIsBase4(digit);
         keyboardBuffer += digit;
         updateDisplayValue();
@@ -31,19 +33,7 @@ public class VirtualDisplay {
         displayValue = new QuaternaryNumber(keyboardBuffer);
     }
 
-    public String getDisplayString() {
-        if (displayBase10) {
-            return displayValue.toDecimalForm();
-        } else {
-            return displayValue.toString();
-        }
-    }
-
-    public void toggleBase() {
-        displayBase10 = !displayBase10;
-    }
-
-    public void typeUnaryOperator(UnaryOperator operator) {
+    public void pressUnaryOperator(UnaryOperator operator) {
         if (operator == UnaryOperator.SQUARE) {
             displayValue = displayValue.squared();
         } else {
@@ -57,13 +47,26 @@ public class VirtualDisplay {
         keyboardBuffer = "0";
     }
 
-    public void clearEntry() {
-        keyboardBuffer = "0";
-        updateDisplayValue();
-        lastKeyPressedWasBinaryOperator = false;
+    public void pressBinaryOperator(BinaryOperator operator) {
+        if (!lastKeyPressedWasBinaryOperator && !binaryOperatorInCalculator) {
+            clearTypedInputButKeepDisplay();
+            calculator.submitBinaryOperation(displayValue, operator);
+            lastKeyPressedWasBinaryOperator = true;
+            binaryOperatorInCalculator = true;
+        } else if (lastKeyPressedWasBinaryOperator) {
+            calculator.replaceLastBinaryOperation(operator);
+        }
     }
 
-    public void typeBackspace() {
+    public void pressEnter() {
+        clearTypedInputButKeepDisplay();
+        displayValue = calculator.evaluate(displayValue);
+        calculator.reset();
+        lastKeyPressedWasBinaryOperator = false;
+        binaryOperatorInCalculator = false;
+    }
+
+    public void pressBackspace() {
         int bufferLength = keyboardBuffer.length();
         if (bufferLength == 1) {
             keyboardBuffer = "0";
@@ -74,22 +77,21 @@ public class VirtualDisplay {
         lastKeyPressedWasBinaryOperator = false;
     }
 
-    public void typeEnter() {
-        clearTypedInputButKeepDisplay();
-        displayValue = calculator.evaluate(displayValue);
-        calculator.reset();
+    public void clearEntry() {
+        keyboardBuffer = "0";
+        updateDisplayValue();
         lastKeyPressedWasBinaryOperator = false;
-        binaryOperatorInCalculator = false;
     }
 
-    public void typeBinaryOperator(BinaryOperator operator) {
-        if (!lastKeyPressedWasBinaryOperator && !binaryOperatorInCalculator) {
-            clearTypedInputButKeepDisplay();
-            calculator.submitBinaryOperation(displayValue, operator);
-            lastKeyPressedWasBinaryOperator = true;
-            binaryOperatorInCalculator = true;
-        } else if (lastKeyPressedWasBinaryOperator) {
-            calculator.replaceLastBinaryOperation(operator);
+    public void toggleBase() {
+        displayBase10 = !displayBase10;
+    }
+
+    public String getDisplayString() {
+        if (displayBase10) {
+            return displayValue.toDecimalForm();
+        } else {
+            return displayValue.toString();
         }
     }
 }
