@@ -64,4 +64,39 @@ public class TestVirtualDisplay {
         String expected = "1";
         Assertions.assertEquals(expected, actual);
     }
+
+
+    @Test
+    public void testToggleBaseDisplaysBase10After1Call() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("1");
+        display.typeDigit("3");
+        display.toggleBase();
+        String actual = display.getDisplayString();
+        String expected = "7";
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testToggleBaseDisplaysBase10EvenWhenTypingOccursAfterSingleCall() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.toggleBase();
+        display.typeDigit("2");
+        display.typeDigit("1");
+        String actual = display.getDisplayString();
+        String expected = "9";
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testToggleBaseDisplaysBase4After2Calls() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("3");
+        display.typeDigit("2");
+        display.toggleBase();
+        display.toggleBase();
+        String actual = display.getDisplayString();
+        String expected = "32";
+        Assertions.assertEquals(expected, actual);
+    }
 }

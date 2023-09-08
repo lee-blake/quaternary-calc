@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 public class VirtualDisplay {
 
     private String keyboardBuffer = "0";
+    private boolean displayBase10 = false;
 
     public void typeDigit(String digit) {
         verifyDigitIsBase4(digit);
@@ -21,6 +22,14 @@ public class VirtualDisplay {
     }
 
     public String getDisplayString() {
-        return new QuaternaryNumber(keyboardBuffer).toString();
+        if (displayBase10) {
+            return new QuaternaryNumber(keyboardBuffer).toDecimalForm();
+        } else {
+            return new QuaternaryNumber(keyboardBuffer).toString();
+        }
+    }
+
+    public void toggleBase() {
+        displayBase10 = !displayBase10;
     }
 }
