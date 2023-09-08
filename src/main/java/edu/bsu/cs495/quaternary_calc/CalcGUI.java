@@ -134,27 +134,7 @@ public class CalcGUI {
         textAreaPanel.add(baseLabel);
         textAreaPanel.add(textArea1);
 
-        // Add Buttons to row1
-        JPanel row1 = buildRow1();
-
-
-        // Add Buttons to row2
-        JPanel row2 = buildRow2();
-
-
-        // Add Buttons to row3
-        JPanel row3 = buildRow3();
-
-        // Add Buttons to row4
-        JPanel row4 = buildRow4();
-
-        // Add Rows to Button Panel
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
-        buttonPanel.add(row1);
-        buttonPanel.add(row2);
-        buttonPanel.add(row3);
-        buttonPanel.add(row4);
+        JPanel buttonPanel = buildButtonPanel();
 
         // Format the Window and Add Button Panels
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -198,6 +178,16 @@ public class CalcGUI {
         flipButton.addActionListener(e -> onFlipButtonPressed());
         backspaceButton.addActionListener(e -> onBackspaceButtonPressed());
         clearButton.addActionListener(e -> onClearButtonPressed());
+    }
+
+    private JPanel buildButtonPanel() {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+        buttonPanel.add(buildRow1());
+        buttonPanel.add(buildRow2());
+        buttonPanel.add(buildRow3());
+        buttonPanel.add(buildRow4());
+        return buttonPanel;
     }
 
     private JPanel buildRow1() {
