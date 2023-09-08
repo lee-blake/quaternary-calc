@@ -8,6 +8,7 @@ public class CalcGUI {
 
     JFrame frame = new JFrame("Quaternary Calculator");
     JTextArea textArea1 = new JTextArea();
+    JTextArea baseLabel = new JTextArea("Base 4:");
 
 
     private final VirtualDisplay display = new VirtualDisplay();
@@ -37,8 +38,17 @@ public class CalcGUI {
 
     public void onFlipButtonPressed() {
         display.toggleBase();
+        switchBaseLabel();
         moveVirtualDisplayToGUI();
+    }
 
+    private void switchBaseLabel(){
+        if (display.isBase10()){
+            baseLabel.setText("Base 10:");
+        }
+        else{
+            baseLabel.setText("Base 4:");
+        }
     }
 
     public void onZeroButtonPressed() {
@@ -97,7 +107,6 @@ public class CalcGUI {
         Font font2 = new Font("Verdana", Font.BOLD, 24);
         textArea1.setFont(font2);
 
-        JTextArea baseLabel = new JTextArea("Base 10:");
         Font font1 = new Font("Verdana", Font.BOLD, 18);
         baseLabel.setFont(font1);
         baseLabel.setEditable(false);
