@@ -40,4 +40,8 @@ public class VirtualDisplay {
             keyboardBuffer = new QuaternaryNumber(keyboardBuffer).squareRoot().toString();
         }
     }
+
+    public void clearEntry() {
+        keyboardBuffer = "0";
+    }
 }

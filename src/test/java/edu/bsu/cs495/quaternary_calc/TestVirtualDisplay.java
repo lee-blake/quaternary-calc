@@ -122,4 +122,30 @@ public class TestVirtualDisplay {
         String expected = "2";
         Assertions.assertEquals(expected, actual);
     }
+
+
+    @Test
+    public void testClearEntryClearsEntry() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("1");
+        display.typeDigit("0");
+        display.clearEntry();
+        String actual = display.getDisplayString();
+        String expected = "0";
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testClearEntryAllowsTypingAfterClearing() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("2");
+        display.typeDigit("3");
+        display.clearEntry();
+        display.typeDigit("3");
+        display.typeDigit("3");
+        display.typeDigit("0");
+        String actual = display.getDisplayString();
+        String expected = "330";
+        Assertions.assertEquals(expected, actual);
+    }
 }
