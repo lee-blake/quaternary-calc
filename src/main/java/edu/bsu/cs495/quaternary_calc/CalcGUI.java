@@ -13,6 +13,7 @@ public class CalcGUI {
     private final VirtualDisplay display = new VirtualDisplay();
 
     private void moveVirtualDisplayToGUI() {
+
         textArea1.setText(display.getDisplayString());
 
         // set up button presses to append to text area
@@ -93,11 +94,15 @@ public class CalcGUI {
     public CalcGUI() {
         textArea1.setForeground(Color.BLACK);
         textArea1.setText("0");
+        Font font2 = new Font("Verdana", Font.BOLD, 24);
+        textArea1.setFont(font2);
 
-        JTextArea base10Label = new JTextArea("Base 10:");
-        base10Label.setEditable(false);
-        base10Label.setBackground(null);
-        base10Label.setForeground(Color.BLACK);
+        JTextArea baseLabel = new JTextArea("Base 10:");
+        Font font1 = new Font("Verdana", Font.BOLD, 18);
+        baseLabel.setFont(font1);
+        baseLabel.setEditable(false);
+        baseLabel.setBackground(null);
+        baseLabel.setForeground(Color.BLACK);
 
         // Initialize number buttons
         JButton zeroButton = new JButton("0");
@@ -139,7 +144,7 @@ public class CalcGUI {
 
         // Format Display with Labels and Text Areas
         JPanel textAreaPanel = new JPanel(twoByTwoGrid);
-        textAreaPanel.add(base10Label);
+        textAreaPanel.add(baseLabel);
         textAreaPanel.add(textArea1);
 
         // Add Buttons to row1
