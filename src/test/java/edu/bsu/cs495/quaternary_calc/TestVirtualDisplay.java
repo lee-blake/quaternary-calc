@@ -33,6 +33,7 @@ public class TestVirtualDisplay {
     }
 
 
+
     @Test
     public void testGetDisplayStringStartsAsZero() {
         VirtualDisplay display = new VirtualDisplay();
@@ -322,6 +323,20 @@ public class TestVirtualDisplay {
         display.pressEnter();
         String actual = display.getDisplayString();
         String expected = "12";
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testPressBinaryOperatorChainsOperatorsWhenSeparatedByNumbers() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.pressDigit("1");
+        display.pressBinaryOperator(BinaryOperator.ADDITION);
+        display.pressDigit("2");
+        display.pressBinaryOperator(BinaryOperator.MULTIPLICATION);
+        display.pressDigit("3");
+        display.pressEnter();
+        String actual = display.getDisplayString();
+        String expected = "21";
         Assertions.assertEquals(expected, actual);
     }
 
