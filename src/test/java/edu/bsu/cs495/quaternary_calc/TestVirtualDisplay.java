@@ -348,4 +348,20 @@ public class TestVirtualDisplay {
         String expected = "3";
         Assertions.assertEquals(expected, actual);
     }
+
+
+    @Test
+    public void testIsBase10NoTogglesFalse() {
+        VirtualDisplay display = new VirtualDisplay();
+        boolean actual = display.isBase10();
+        Assertions.assertFalse(actual);
+    }
+
+    @Test
+    public void testIsBase10OneToggleTrue() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.toggleBase();
+        boolean actual = display.isBase10();
+        Assertions.assertTrue(actual);
+    }
 }
