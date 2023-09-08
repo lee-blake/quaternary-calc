@@ -83,6 +83,12 @@ public class VirtualDisplay {
         lastKeyPressedWasBinaryOperator = false;
     }
 
+    public void clearAll() {
+        clearEntry();
+        calculator.reset();
+        binaryOperatorInCalculator = false;
+    }
+
     public void toggleBase() {
         displayBase10 = !displayBase10;
     }
@@ -93,11 +99,5 @@ public class VirtualDisplay {
         } else {
             return displayValue.toString();
         }
-    }
-
-    public void clearAll() {
-        clearEntry();
-        calculator.reset();
-        binaryOperatorInCalculator = false;
     }
 }
