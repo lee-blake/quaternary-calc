@@ -5,9 +5,52 @@ import java.awt.*;
 //import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CalcGUITest {
 
-    public CalcGUITest() {
+public class CalcGUI {
+
+    private VirtualDisplay display = new VirtualDisplay();
+
+    public void enterButton() {
+
+        display.pressEnter();
+    }
+
+    public void backSpaceButton() {
+
+        display.pressBackspace();
+    }
+
+    public void clearButton() {
+
+        display.clearAll();
+    }
+
+    public void flipButton() {
+
+        display.toggleBase();
+    }
+
+    public void zeroButton() {
+
+        display.pressDigit("0");
+    }
+
+    public void oneButton() {
+
+        display.pressDigit("1");
+    }
+
+    public void twoButton() {
+
+        display.pressDigit("2");
+    }
+
+    public void threeButton() {
+
+        display.pressDigit("3");
+    }
+
+    public CalcGUI() {
         // Initialize window and display text areas
         JFrame frame = new JFrame("Quaternary Calculator");
         JTextArea textArea1 = new JTextArea();
@@ -199,6 +242,6 @@ public class CalcGUITest {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(CalcGUITest::new);
+        SwingUtilities.invokeLater(CalcGUI::new);
     }
 }
