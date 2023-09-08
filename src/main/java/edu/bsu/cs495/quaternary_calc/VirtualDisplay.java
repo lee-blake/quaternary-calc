@@ -9,11 +9,14 @@ public class VirtualDisplay {
     private QuaternaryNumber displayValue = new QuaternaryNumber("0");
     private boolean displayBase10 = false;
     private final QuaternaryCalculator calculator = new QuaternaryCalculator();
+    private boolean binaryOperatorInCalculator = false;
+    private boolean lastKeyPressedWasBinaryOperator = false;
 
     public void typeDigit(String digit) {
         verifyDigitIsBase4(digit);
         keyboardBuffer += digit;
         updateDisplayValue();
+        lastKeyPressedWasBinaryOperator = false;
     }
 
     private void verifyDigitIsBase4(String possibleDigit) {
@@ -47,6 +50,7 @@ public class VirtualDisplay {
             displayValue = displayValue.squareRoot();
         }
         clearTypedInputButKeepDisplay();
+        lastKeyPressedWasBinaryOperator = false;
     }
 
     private void clearTypedInputButKeepDisplay() {
@@ -56,6 +60,7 @@ public class VirtualDisplay {
     public void clearEntry() {
         keyboardBuffer = "0";
         updateDisplayValue();
+        lastKeyPressedWasBinaryOperator = false;
     }
 
     public void typeBackspace() {
@@ -66,16 +71,25 @@ public class VirtualDisplay {
             keyboardBuffer = keyboardBuffer.substring(0, bufferLength - 1);
         }
         updateDisplayValue();
+        lastKeyPressedWasBinaryOperator = false;
     }
 
     public void typeEnter() {
         clearTypedInputButKeepDisplay();
         displayValue = calculator.evaluate(displayValue);
         calculator.reset();
+        lastKeyPressedWasBinaryOperator = false;
+        binaryOperatorInCalculator = false;
     }
 
     public void typeBinaryOperator(BinaryOperator operator) {
-        clearTypedInputButKeepDisplay();
-        calculator.submitBinaryOperation(displayValue, operator);
+        if (!lastKeyPressedWasBinaryOperator && !binaryOperatorInCalculator) {
+            clearTypedInputButKeepDisplay();
+            calculator.submitBinaryOperation(displayValue, operator);
+            lastKeyPressedWasBinaryOperator = true;
+            binaryOperatorInCalculator = true;
+        } else if (lastKeyPressedWasBinaryOperator) {
+            calculator.replaceLastBinaryOperation(operator);
+        }
     }
 }

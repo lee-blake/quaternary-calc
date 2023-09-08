@@ -288,4 +288,16 @@ public class TestVirtualDisplay {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void testTypeBinaryOperatorFollowingOtherBinaryOperatorReplaces() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("2");
+        display.typeBinaryOperator(BinaryOperator.ADDITION);
+        display.typeBinaryOperator(BinaryOperator.MULTIPLICATION);
+        display.typeDigit("3");
+        display.typeEnter();
+        String actual = display.getDisplayString();
+        String expected = "12";
+        Assertions.assertEquals(expected, actual);
+    }
 }
