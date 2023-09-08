@@ -2,7 +2,6 @@ package edu.bsu.cs495.quaternary_calc;
 
 import javax.swing.*;
 import java.awt.*;
-//import java.awt.event.ActionEvent;
 
 public class CalcGUI {
 
