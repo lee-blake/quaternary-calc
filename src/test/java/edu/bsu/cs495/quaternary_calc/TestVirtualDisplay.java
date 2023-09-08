@@ -102,7 +102,7 @@ public class TestVirtualDisplay {
 
 
     @Test
-    public void testpressUnaryOperatorSquaredDisplaysCorrectly() {
+    public void testPressUnaryOperatorSquaredDisplaysCorrectly() {
         VirtualDisplay display = new VirtualDisplay();
         display.pressDigit("1");
         display.pressDigit("0");
@@ -113,7 +113,7 @@ public class TestVirtualDisplay {
     }
 
     @Test
-    public void testpressUnaryOperatorSquareRootDisplaysCorrectly() {
+    public void testPressUnaryOperatorSquareRootDisplaysCorrectly() {
         VirtualDisplay display = new VirtualDisplay();
         display.pressDigit("1");
         display.pressDigit("0");
@@ -124,7 +124,7 @@ public class TestVirtualDisplay {
     }
 
     @Test
-    public void testpressUnaryOperatorTypingAdditionalDigitsImplicitlyClears() {
+    public void testPressUnaryOperatorTypingAdditionalDigitsImplicitlyClears() {
         VirtualDisplay display = new VirtualDisplay();
         display.pressDigit("1");
         display.pressDigit("0");
@@ -163,7 +163,7 @@ public class TestVirtualDisplay {
 
 
     @Test
-    public void testpressBackspaceOnZeroRetainsZero() {
+    public void testPressBackspaceOnZeroRetainsZero() {
         VirtualDisplay display = new VirtualDisplay();
         display.pressBackspace();
         String actual = display.getDisplayString();
@@ -172,7 +172,7 @@ public class TestVirtualDisplay {
     }
 
     @Test
-    public void testpressBackspaceOnSingleDigitTurnsToZero() {
+    public void testPressBackspaceOnSingleDigitTurnsToZero() {
         VirtualDisplay display = new VirtualDisplay();
         display.pressDigit("3");
         display.pressBackspace();
@@ -182,7 +182,7 @@ public class TestVirtualDisplay {
     }
 
     @Test
-    public void testpressBackspaceOnMultipleDigitsOnlyErasesLast() {
+    public void testPressBackspaceOnMultipleDigitsOnlyErasesLast() {
         VirtualDisplay display = new VirtualDisplay();
         display.pressDigit("3");
         display.pressDigit("2");
@@ -195,7 +195,7 @@ public class TestVirtualDisplay {
 
 
     @Test
-    public void testpressEnterAfterSingleNumberContinuesDisplayingThatNumber() {
+    public void testPressEnterAfterSingleNumberContinuesDisplayingThatNumber() {
         VirtualDisplay display = new VirtualDisplay();
         display.pressDigit("3");
         display.pressDigit("2");
@@ -207,7 +207,7 @@ public class TestVirtualDisplay {
     }
 
     @Test
-    public void testpressEnterAfterSingleNumberImplicitlyClears() {
+    public void testPressEnterAfterSingleNumberImplicitlyClears() {
         VirtualDisplay display = new VirtualDisplay();
         display.pressDigit("3");
         display.pressDigit("2");
@@ -220,7 +220,7 @@ public class TestVirtualDisplay {
     }
 
     @Test
-    void testpressEnterCalculationResetsAfterEnter() {
+    public void testPressEnterCalculationResetsAfterEnter() {
         VirtualDisplay display = new VirtualDisplay();
         display.pressDigit("1");
         display.pressBinaryOperator(BinaryOperator.ADDITION);
@@ -237,7 +237,7 @@ public class TestVirtualDisplay {
 
 
     @Test
-    public void testpressBinaryOperatorDoesAdditionCorrectly() {
+    public void testPressBinaryOperatorDoesAdditionCorrectly() {
         VirtualDisplay display = new VirtualDisplay();
         display.pressDigit("1");
         display.pressDigit("3");
@@ -250,7 +250,7 @@ public class TestVirtualDisplay {
     }
 
     @Test
-    public void testpressBinaryOperatorDoesSubtractionCorrectly() {
+    public void testPressBinaryOperatorDoesSubtractionCorrectly() {
         VirtualDisplay display = new VirtualDisplay();
         display.pressDigit("2");
         display.pressDigit("0");
@@ -263,7 +263,7 @@ public class TestVirtualDisplay {
     }
 
     @Test
-    public void testpressBinaryOperatorDoesMultiplicationCorrectly() {
+    public void testPressBinaryOperatorDoesMultiplicationCorrectly() {
         VirtualDisplay display = new VirtualDisplay();
         display.pressDigit("2");
         display.pressBinaryOperator(BinaryOperator.MULTIPLICATION);
@@ -275,7 +275,7 @@ public class TestVirtualDisplay {
     }
 
     @Test
-    public void testpressBinaryOperatorDoesDivisionCorrectly() {
+    public void testPressBinaryOperatorDoesDivisionCorrectly() {
         VirtualDisplay display = new VirtualDisplay();
         display.pressDigit("1");
         display.pressDigit("3");
@@ -288,7 +288,7 @@ public class TestVirtualDisplay {
     }
 
     @Test
-    public void testpressBinaryOperatorFollowingOtherBinaryOperatorReplaces() {
+    public void testPressBinaryOperatorFollowingOtherBinaryOperatorReplaces() {
         VirtualDisplay display = new VirtualDisplay();
         display.pressDigit("2");
         display.pressBinaryOperator(BinaryOperator.ADDITION);
