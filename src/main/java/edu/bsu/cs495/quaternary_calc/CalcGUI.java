@@ -3,8 +3,6 @@ package edu.bsu.cs495.quaternary_calc;
 import javax.swing.*;
 import java.awt.*;
 //import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 
 public class CalcGUI {
 
@@ -227,61 +225,6 @@ public class CalcGUI {
             if (!currentText.isEmpty()) {
                 textArea1.setText(currentText.substring(0, currentText.length() - 1));
             }
-        });
-
-        // Handle Disabling Operators:
-
-        JButton[] operatorButtons = { addButton, subButton, mulButton, divButton, sqButton, sqrtButton };
-        JButton[] numberButtons = { zeroButton, oneButton, twoButton, threeButton };
-
-        final boolean[] operatorPressed = { false };
-
-        ActionListener disableOperatorButtons = e -> {
-            if (!operatorPressed[0]) {
-                operatorPressed[0] = true;
-                for (JButton button : operatorButtons) {
-                    button.setEnabled(false);
-                }
-            }
-        };
-
-        addButton.addActionListener(disableOperatorButtons);
-        subButton.addActionListener(disableOperatorButtons);
-        mulButton.addActionListener(disableOperatorButtons);
-        divButton.addActionListener(disableOperatorButtons);
-        sqButton.addActionListener(disableOperatorButtons);
-        sqrtButton.addActionListener(disableOperatorButtons);
-
-        final boolean[] enterPressed;
-        enterPressed = new boolean[]{ false };
-
-        enterButton.addActionListener(e -> {
-            textArea1.append(" = ");
-            enterPressed[0] = true;
-            // Disable all buttons
-            for (JButton button : operatorButtons) {
-                button.setEnabled(false);
-            }
-            for (JButton button : numberButtons){
-                button.setEnabled(false);
-            }
-            backspaceButton.setEnabled(false);
-            enterButton.setEnabled(false);
-        });
-
-        clearButton.addActionListener(e -> {
-            textArea1.setText("");
-            operatorPressed[0] = false;
-            enterPressed[0] = false;
-            for (JButton button : operatorButtons) {
-                button.setEnabled(true);
-            }
-            zeroButton.setEnabled(true);
-            oneButton.setEnabled(true);
-            twoButton.setEnabled(true);
-            threeButton.setEnabled(true);
-            backspaceButton.setEnabled(true);
-            enterButton.setEnabled(true);
         });
     }
 
