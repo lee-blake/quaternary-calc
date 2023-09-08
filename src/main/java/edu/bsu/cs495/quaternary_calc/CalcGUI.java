@@ -94,19 +94,10 @@ public class CalcGUI {
         textArea1.setForeground(Color.BLACK);
         textArea1.setText("0");
 
-        JTextArea textArea2 = new JTextArea("PlaceHolder Text");
-        textArea2.setForeground(Color.LIGHT_GRAY);
-        textArea2.setEditable(false); //This value can not be changed to avoid having someone type something in and mess it up
-
         JTextArea base10Label = new JTextArea("Base 10:");
         base10Label.setEditable(false);
         base10Label.setBackground(null);
         base10Label.setForeground(Color.BLACK);
-
-        JTextArea base4Label = new JTextArea("Base 4:");
-        base4Label.setEditable(false);
-        base4Label.setBackground(null);
-        base4Label.setForeground(Color.LIGHT_GRAY);
 
         // Initialize number buttons
         JButton zeroButton = new JButton("0");
@@ -150,8 +141,6 @@ public class CalcGUI {
         JPanel textAreaPanel = new JPanel(twoByTwoGrid);
         textAreaPanel.add(base10Label);
         textAreaPanel.add(textArea1);
-        textAreaPanel.add(base4Label);
-        textAreaPanel.add(textArea2);
 
         // Add Buttons to row1
         JPanel row1 = new JPanel(oneByTwoGrid);
@@ -206,26 +195,6 @@ public class CalcGUI {
         frame.add(buttonPanel, BorderLayout.CENTER);
         frame.setSize(600, 400);
         frame.setVisible(true);
-
-
-
-        flipButton.addActionListener(e -> {
-            // flip font colors
-            Color tempColor = textArea1.getForeground();
-            textArea1.setForeground(textArea2.getForeground());
-            textArea2.setForeground(tempColor);
-
-            tempColor = base10Label.getForeground();
-            base10Label.setForeground(base4Label.getForeground());
-            base4Label.setForeground(tempColor);
-        });
-
-        backspaceButton.addActionListener(e -> {
-            String currentText = textArea1.getText();
-            if (!currentText.isEmpty()) {
-                textArea1.setText(currentText.substring(0, currentText.length() - 1));
-            }
-        });
     }
 
     public static void main(String[] args) {
