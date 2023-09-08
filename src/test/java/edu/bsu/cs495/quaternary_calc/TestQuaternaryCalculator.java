@@ -159,11 +159,9 @@ public class TestQuaternaryCalculator {
         @Test
         public void testReplaceLastBinaryOperation() {
                 QuaternaryCalculator calculator = new QuaternaryCalculator();
-                calculator.submitBinaryOperation(new QuaternaryNumber("1"), BinaryOperator.ADDITION);
                 calculator.submitBinaryOperation(new QuaternaryNumber("2"), BinaryOperator.SUBTRACTION);
-                calculator.evaluateIgnoringLastOperation();
                 calculator.replaceLastBinaryOperation(BinaryOperator.MULTIPLICATION);
-                assertEquals(new QuaternaryNumber("-2"), calculator.evaluateIgnoringLastOperation());
+                assertEquals(new QuaternaryNumber("-2"), calculator.evaluate(new QuaternaryNumber("-1")));
         }
 
 }
