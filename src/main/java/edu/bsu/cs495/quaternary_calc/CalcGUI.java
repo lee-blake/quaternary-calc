@@ -136,9 +136,9 @@ public class CalcGUI {
         sqButton.addActionListener(e -> onSqButtonPressed());
         JButton sqrtButton = new JButton("sqrt");
         sqrtButton.addActionListener(e -> onSqrtButtonPressed());
-        JButton enterButton = new JButton("enter");
+        JButton enterButton = new JButton("=");
         enterButton.addActionListener(e -> onEnterButtonPressed());
-        JButton flipButton = new JButton("base");
+        JButton flipButton = new JButton("swap base");
         flipButton.addActionListener(e -> onFlipButtonPressed());
         JButton backspaceButton = new JButton("back");
         backspaceButton.addActionListener(e -> onBackspaceButtonPressed());
