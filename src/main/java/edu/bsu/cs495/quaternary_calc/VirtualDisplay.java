@@ -32,4 +32,12 @@ public class VirtualDisplay {
     public void toggleBase() {
         displayBase10 = !displayBase10;
     }
+
+    public void typeUnaryOperator(UnaryOperator operator) {
+        if (operator == UnaryOperator.SQUARE) {
+            keyboardBuffer = new QuaternaryNumber(keyboardBuffer).squared().toString();
+        } else {
+            keyboardBuffer = new QuaternaryNumber(keyboardBuffer).squareRoot().toString();
+        }
+    }
 }

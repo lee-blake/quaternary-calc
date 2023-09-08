@@ -99,4 +99,27 @@ public class TestVirtualDisplay {
         String expected = "32";
         Assertions.assertEquals(expected, actual);
     }
+
+
+    @Test
+    public void testTypeUnaryOperatorSquaredDisplaysCorrectly() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("1");
+        display.typeDigit("0");
+        display.typeUnaryOperator(UnaryOperator.SQUARE);
+        String actual = display.getDisplayString();
+        String expected = "100";
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testTypeUnaryOperatorSquareRootDisplaysCorrectly() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("1");
+        display.typeDigit("0");
+        display.typeUnaryOperator(UnaryOperator.SQUARE_ROOT);
+        String actual = display.getDisplayString();
+        String expected = "2";
+        Assertions.assertEquals(expected, actual);
+    }
 }
