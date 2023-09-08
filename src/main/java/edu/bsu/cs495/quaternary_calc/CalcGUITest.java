@@ -2,6 +2,7 @@ package edu.bsu.cs495.quaternary_calc;
 
 import javax.swing.*;
 import java.awt.*;
+//import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CalcGUITest {
@@ -45,10 +46,10 @@ public class CalcGUITest {
         JButton clearButton = new JButton("clear");
 
         // Grid Layout Formats
-        GridLayout oneByOneGrid = new GridLayout(1, 1);
-        GridLayout oneByTwoGrid = new GridLayout(1, 2);
-        GridLayout oneByFourGrid = new GridLayout(1, 4);
-        GridLayout twoByTwoGrid = new GridLayout(2, 2);
+        GridLayout oneByOneGrid = new GridLayout(1,1);
+        GridLayout oneByTwoGrid = new GridLayout(1,2);
+        GridLayout oneByFourGrid = new GridLayout(1,4);
+        GridLayout twoByTwoGrid = new GridLayout(2,2);
 
         // Format Display with Labels and Text Areas
         JPanel textAreaPanel = new JPanel(twoByTwoGrid);
@@ -144,8 +145,8 @@ public class CalcGUITest {
 
         // Handle Disabling Operators:
 
-        JButton[] operatorButtons = {addButton, subButton, mulButton, divButton, sqButton, sqrtButton};
-        JButton[] numberButtons = {zeroButton, oneButton, twoButton, threeButton};
+        JButton[] operatorButtons = { addButton, subButton, mulButton, divButton, sqButton, sqrtButton };
+        JButton[] numberButtons = { zeroButton, oneButton, twoButton, threeButton };
 
         final boolean[] operatorPressed = { false };
 
@@ -174,7 +175,7 @@ public class CalcGUITest {
             for (JButton button : operatorButtons) {
                 button.setEnabled(false);
             }
-            for (JButton button : numberButtons) {
+            for (JButton button : numberButtons){
                 button.setEnabled(false);
             }
             backspaceButton.setEnabled(false);
