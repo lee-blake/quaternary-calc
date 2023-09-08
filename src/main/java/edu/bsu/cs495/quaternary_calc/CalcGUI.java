@@ -10,6 +10,21 @@ public class CalcGUI {
     JTextArea textArea1 = new JTextArea();
     JTextArea baseLabel = new JTextArea("Base 4:");
 
+    private final JButton zeroButton = new JButton("0");
+    private final JButton oneButton = new JButton("1");
+    private final JButton twoButton = new JButton("2");
+    private final JButton threeButton = new JButton("3");
+
+    private final JButton addButton = new JButton("+");
+    private final JButton subButton = new JButton("-");
+    private final JButton mulButton = new JButton("*");
+    private final JButton divButton = new JButton("/");
+    private final JButton sqButton = new JButton("sq");
+    private final JButton sqrtButton = new JButton("sqrt");
+    private final JButton enterButton = new JButton("=");
+    private final JButton flipButton = new JButton("swap base");
+    private final JButton backspaceButton = new JButton("back");
+    private final JButton clearButton = new JButton("clear all");
 
     private final VirtualDisplay display = new VirtualDisplay();
 
@@ -102,51 +117,12 @@ public class CalcGUI {
     }
 
     public CalcGUI() {
-        textArea1.setForeground(Color.BLACK);
-        textArea1.setText("0");
-        Font font2 = new Font("Verdana", Font.BOLD, 24);
-        textArea1.setFont(font2);
+        setupActionListenersForButtons();
+        setupDisplayAndBaseLabel();
+        setupWindowLayout();
+    }
 
-        Font font1 = new Font("Verdana", Font.BOLD, 18);
-        baseLabel.setFont(font1);
-        baseLabel.setEditable(false);
-        baseLabel.setBackground(null);
-        baseLabel.setForeground(Color.BLACK);
-
-        textArea1.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-
-        // Initialize number buttons
-        JButton zeroButton = new JButton("0");
-        zeroButton.addActionListener(e -> onZeroButtonPressed());
-        JButton oneButton = new JButton("1");
-        oneButton.addActionListener(e -> onOneButtonPressed());
-        JButton twoButton = new JButton("2");
-        twoButton.addActionListener(e -> onTwoButtonPressed());
-        JButton threeButton = new JButton("3");
-        threeButton.addActionListener(e -> onThreeButtonPressed());
-
-        // Initialize operator buttons
-        JButton addButton = new JButton("+");
-        addButton.addActionListener(e -> onAddButtonPressed());
-        JButton subButton = new JButton("-");
-        subButton.addActionListener(e -> onSubButtonPressed());
-        JButton mulButton = new JButton("*");
-        mulButton.addActionListener(e -> onMulButtonPressed());
-        JButton divButton = new JButton("/");
-        divButton.addActionListener(e -> onDivButtonPressed());
-        JButton sqButton = new JButton("sq");
-        sqButton.addActionListener(e -> onSqButtonPressed());
-        JButton sqrtButton = new JButton("sqrt");
-        sqrtButton.addActionListener(e -> onSqrtButtonPressed());
-        JButton enterButton = new JButton("=");
-        enterButton.addActionListener(e -> onEnterButtonPressed());
-        JButton flipButton = new JButton("swap base");
-        flipButton.addActionListener(e -> onFlipButtonPressed());
-        JButton backspaceButton = new JButton("back");
-        backspaceButton.addActionListener(e -> onBackspaceButtonPressed());
-        JButton clearButton = new JButton("clear all");
-        clearButton.addActionListener(e -> onClearButtonPressed());
-
+    private void setupWindowLayout(){
         // Grid Layout Formats
         GridLayout oneByOneGrid = new GridLayout(1,1);
         GridLayout oneByTwoGrid = new GridLayout(1,2);
@@ -211,6 +187,41 @@ public class CalcGUI {
         frame.add(buttonPanel, BorderLayout.CENTER);
         frame.setSize(600, 400);
         frame.setVisible(true);
+    }
+
+    private void setupDisplayAndBaseLabel(){
+        textArea1.setForeground(Color.BLACK);
+        textArea1.setText("0");
+        Font font2 = new Font("Verdana", Font.BOLD, 24);
+        textArea1.setFont(font2);
+
+        Font font1 = new Font("Verdana", Font.BOLD, 18);
+        baseLabel.setFont(font1);
+        baseLabel.setEditable(false);
+        baseLabel.setBackground(null);
+        baseLabel.setForeground(Color.BLACK);
+
+        textArea1.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+    }
+
+    private void setupActionListenersForButtons(){
+        // Initialize number buttons
+        zeroButton.addActionListener(e -> onZeroButtonPressed());
+        oneButton.addActionListener(e -> onOneButtonPressed());
+        twoButton.addActionListener(e -> onTwoButtonPressed());
+        threeButton.addActionListener(e -> onThreeButtonPressed());
+
+        // Initialize operator buttons
+        addButton.addActionListener(e -> onAddButtonPressed());
+        subButton.addActionListener(e -> onSubButtonPressed());
+        mulButton.addActionListener(e -> onMulButtonPressed());
+        divButton.addActionListener(e -> onDivButtonPressed());
+        sqButton.addActionListener(e -> onSqButtonPressed());
+        sqrtButton.addActionListener(e -> onSqrtButtonPressed());
+        enterButton.addActionListener(e -> onEnterButtonPressed());
+        flipButton.addActionListener(e -> onFlipButtonPressed());
+        backspaceButton.addActionListener(e -> onBackspaceButtonPressed());
+        clearButton.addActionListener(e -> onClearButtonPressed());
     }
 
     public static void main(String[] args) {
