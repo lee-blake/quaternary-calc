@@ -44,4 +44,13 @@ public class VirtualDisplay {
     public void clearEntry() {
         keyboardBuffer = "0";
     }
+
+    public void typeBackspace() {
+        int bufferLength = keyboardBuffer.length();
+        if (bufferLength == 1) {
+            keyboardBuffer = "0";
+        } else {
+            keyboardBuffer = keyboardBuffer.substring(0, bufferLength - 1);
+        }
+    }
 }

@@ -148,4 +148,36 @@ public class TestVirtualDisplay {
         String expected = "330";
         Assertions.assertEquals(expected, actual);
     }
+
+
+    @Test
+    public void testTypeBackspaceOnZeroRetainsZero() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeBackspace();
+        String actual = display.getDisplayString();
+        String expected = "0";
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testTypeBackspaceOnSingleDigitTurnsToZero() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("3");
+        display.typeBackspace();
+        String actual = display.getDisplayString();
+        String expected = "0";
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testTypeBackspaceOnMultipleDigitsOnlyErasesLast() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("3");
+        display.typeDigit("2");
+        display.typeDigit("1");
+        display.typeBackspace();
+        String actual = display.getDisplayString();
+        String expected = "32";
+        Assertions.assertEquals(expected, actual);
+    }
 }
