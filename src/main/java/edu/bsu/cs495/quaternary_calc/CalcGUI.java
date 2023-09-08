@@ -132,9 +132,9 @@ public class CalcGUI {
         mulButton.addActionListener(e -> onMulButtonPressed());
         JButton divButton = new JButton("/");
         divButton.addActionListener(e -> onDivButtonPressed());
-        JButton sqButton = new JButton("sq");
+        JButton sqButton = new JButton("x²");
         sqButton.addActionListener(e -> onSqButtonPressed());
-        JButton sqrtButton = new JButton("sqrt");
+        JButton sqrtButton = new JButton("\u0221");
         sqrtButton.addActionListener(e -> onSqrtButtonPressed());
         JButton enterButton = new JButton("=");
         enterButton.addActionListener(e -> onEnterButtonPressed());
@@ -142,7 +142,7 @@ public class CalcGUI {
         flipButton.addActionListener(e -> onFlipButtonPressed());
         JButton backspaceButton = new JButton("back");
         backspaceButton.addActionListener(e -> onBackspaceButtonPressed());
-        JButton clearButton = new JButton("clear");
+        JButton clearButton = new JButton("clear all");
         clearButton.addActionListener(e -> onClearButtonPressed());
 
         // Grid Layout Formats
