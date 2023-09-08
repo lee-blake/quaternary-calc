@@ -22,8 +22,9 @@ public class CalcGUI {
     }
 
     public void onEnterButtonPressed() {
-
         display.pressEnter();
+        moveVirtualDisplayToGUI();
+
     }
 
     public void onBackspaceButtonPressed() {
@@ -32,13 +33,15 @@ public class CalcGUI {
     }
 
     public void onClearButtonPressed() {
-
         display.clearAll();
+        moveVirtualDisplayToGUI();
+
     }
 
     public void onFlipButtonPressed() {
-
         display.toggleBase();
+        moveVirtualDisplayToGUI();
+
     }
 
     public void onZeroButtonPressed() {
@@ -58,6 +61,16 @@ public class CalcGUI {
 
     public void onThreeButtonPressed() {
         display.pressDigit("3");
+        moveVirtualDisplayToGUI();
+    }
+
+    public void onSqButtonPressed(){
+        display.pressUnaryOperator(UnaryOperator.SQUARE);
+        moveVirtualDisplayToGUI();
+    }
+
+    public void onSqrtButtonPressed(){
+        display.pressUnaryOperator(UnaryOperator.SQUARE_ROOT);
         moveVirtualDisplayToGUI();
     }
 
@@ -95,7 +108,9 @@ public class CalcGUI {
         JButton mulButton = new JButton("*");
         JButton divButton = new JButton("/");
         JButton sqButton = new JButton("sq");
+        sqButton.addActionListener(e -> onSqButtonPressed());
         JButton sqrtButton = new JButton("sqrt");
+        sqrtButton.addActionListener(e -> onSqrtButtonPressed());
         JButton enterButton = new JButton("enter");
         enterButton.addActionListener(e -> onEnterButtonPressed());
         JButton flipButton = new JButton("base");
