@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class CalcGUITest {
 
     public CalcGUITest() {
-        // Initialize window and display text areaa
+        // Initialize window and display text areas
         JFrame frame = new JFrame("Quaternary Calculator");
         JTextArea textArea1 = new JTextArea();
         textArea1.setForeground(Color.BLACK);
@@ -104,6 +104,7 @@ public class CalcGUITest {
         buttonPanel.add(row3);
         buttonPanel.add(row4);
 
+        // Format the Window and Add Button Panels
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.add(textAreaPanel, BorderLayout.NORTH);
@@ -137,7 +138,7 @@ public class CalcGUITest {
 
         backspaceButton.addActionListener(e -> {
             String currentText = textArea1.getText();
-            if (currentText.length() > 0) {
+            if (!currentText.isEmpty()) {
                 textArea1.setText(currentText.substring(0, currentText.length() - 1));
             }
         });
@@ -145,6 +146,7 @@ public class CalcGUITest {
         // Handle Disabling Operators:
 
         JButton[] operatorButtons = { addButton, subButton, mulButton, divButton, sqButton, sqrtButton };
+        JButton[] numberButtons = { zeroButton, oneButton, twoButton, threeButton };
 
         final boolean[] operatorPressed = { false };
 
@@ -173,10 +175,9 @@ public class CalcGUITest {
             for (JButton button : operatorButtons) {
                 button.setEnabled(false);
             }
-            zeroButton.setEnabled(false);
-            oneButton.setEnabled(false);
-            twoButton.setEnabled(false);
-            threeButton.setEnabled(false);
+            for (JButton button : numberButtons){
+                button.setEnabled(false);
+            }
             backspaceButton.setEnabled(false);
             enterButton.setEnabled(false);
         });
