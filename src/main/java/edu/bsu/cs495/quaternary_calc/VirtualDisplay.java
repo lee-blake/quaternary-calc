@@ -66,4 +66,8 @@ public class VirtualDisplay {
         }
         updateDisplayValue();
     }
+
+    public void typeEnter() {
+        clearTypedInputButKeepDisplay();
+    }
 }

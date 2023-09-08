@@ -192,4 +192,30 @@ public class TestVirtualDisplay {
         String expected = "32";
         Assertions.assertEquals(expected, actual);
     }
+
+
+    @Test
+    public void testTypeEnterAfterSingleNumberContinuesDisplayingThatNumber() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("3");
+        display.typeDigit("2");
+        display.typeDigit("1");
+        display.typeEnter();
+        String actual = display.getDisplayString();
+        String expected = "321";
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testTypeEnterAfterSingleNumberImplicitlyClears() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("3");
+        display.typeDigit("2");
+        display.typeDigit("1");
+        display.typeEnter();
+        display.typeDigit("2");
+        String actual = display.getDisplayString();
+        String expected = "2";
+        Assertions.assertEquals(expected, actual);
+    }
 }
