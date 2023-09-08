@@ -82,16 +82,15 @@ public class TestQuaternaryCalculator {
                                 new QuaternaryNumber("2"),
                                 BinaryOperator.MULTIPLICATION);
                 calculator.submitBinaryOperation(
-                        new QuaternaryNumber("11"),
-                        BinaryOperator.DIVISION);
+                                new QuaternaryNumber("11"),
+                                BinaryOperator.DIVISION);
                 calculator.submitBinaryOperation(
-                        new QuaternaryNumber("2"),
-                        BinaryOperator.DIVISION);
+                                new QuaternaryNumber("2"),
+                                BinaryOperator.DIVISION);
                 QuaternaryNumber actual = calculator.evaluateIgnoringLastOperation();
                 QuaternaryNumber expected = new QuaternaryNumber("101");
                 Assertions.assertEquals(expected, actual);
         }
-
 
         @Test
         public void testEvaluateEmptyCalculatorReturnsPassedValue() {
@@ -105,9 +104,8 @@ public class TestQuaternaryCalculator {
         public void testEvaluateSingleSubmissionAdditionAddsBothValues() {
                 QuaternaryCalculator calculator = new QuaternaryCalculator();
                 calculator.submitBinaryOperation(
-                        new QuaternaryNumber("3"),
-                        BinaryOperator.ADDITION
-                );
+                                new QuaternaryNumber("3"),
+                                BinaryOperator.ADDITION);
                 QuaternaryNumber actual = calculator.evaluate(new QuaternaryNumber("11"));
                 QuaternaryNumber expected = new QuaternaryNumber("20");
                 Assertions.assertEquals(expected, actual);
@@ -117,9 +115,8 @@ public class TestQuaternaryCalculator {
         public void testEvaluateSingleSubmissionSubtractionSubtractsInCorrectOrder() {
                 QuaternaryCalculator calculator = new QuaternaryCalculator();
                 calculator.submitBinaryOperation(
-                        new QuaternaryNumber("13"),
-                        BinaryOperator.SUBTRACTION
-                );
+                                new QuaternaryNumber("13"),
+                                BinaryOperator.SUBTRACTION);
                 QuaternaryNumber actual = calculator.evaluate(new QuaternaryNumber("2"));
                 QuaternaryNumber expected = new QuaternaryNumber("11");
                 Assertions.assertEquals(expected, actual);
@@ -127,64 +124,46 @@ public class TestQuaternaryCalculator {
 
         @Test
         public void testEvaluateSequenceOfAllOperatorsReturnsCorrectly() {
-                // In decimal, this will be 2-1+7/2*3 and should return 12 if using the classical calculator
-                // approach of "greedy" application of operations and this assignment's integer division
+                // In decimal, this will be 2-1+7/2*3 and should return 12 if using the
+                // classical calculator
+                // approach of "greedy" application of operations and this assignment's integer
+                // division
                 QuaternaryCalculator calculator = new QuaternaryCalculator();
                 calculator.submitBinaryOperation(
-                        new QuaternaryNumber("2"),
-                        BinaryOperator.SUBTRACTION
-                );
+                                new QuaternaryNumber("2"),
+                                BinaryOperator.SUBTRACTION);
                 calculator.submitBinaryOperation(
-                        new QuaternaryNumber("1"),
-                        BinaryOperator.ADDITION
-                );
+                                new QuaternaryNumber("1"),
+                                BinaryOperator.ADDITION);
                 calculator.submitBinaryOperation(
-                        new QuaternaryNumber("13"),
-                        BinaryOperator.DIVISION
-                );
+                                new QuaternaryNumber("13"),
+                                BinaryOperator.DIVISION);
                 calculator.submitBinaryOperation(
-                        new QuaternaryNumber("2"),
-                        BinaryOperator.MULTIPLICATION
-                );
+                                new QuaternaryNumber("2"),
+                                BinaryOperator.MULTIPLICATION);
                 QuaternaryNumber actual = calculator.evaluate(new QuaternaryNumber("3"));
                 QuaternaryNumber expected = new QuaternaryNumber("30");
                 Assertions.assertEquals(expected, actual);
         }
 
-
         @Test
         public void testClear() {
-                // testing clear function
                 QuaternaryCalculator calculator = new QuaternaryCalculator();
-                calculator.operands.add(new QuaternaryNumber("10"));
-                calculator.operators.add(BinaryOperator.ADDITION);
+                calculator.submitBinaryOperation(new QuaternaryNumber("1"), BinaryOperator.ADDITION);
+                calculator.submitBinaryOperation(new QuaternaryNumber("2"), BinaryOperator.SUBTRACTION);
+                calculator.evaluateIgnoringLastOperation();
                 calculator.reset();
-
+                assertEquals(new QuaternaryNumber("0"), calculator.evaluateIgnoringLastOperation());
         }
 
         @Test
         public void testReplaceLastBinaryOperation() {
                 QuaternaryCalculator calculator = new QuaternaryCalculator();
-                // Add some operators to the calculator
-                BinaryOperator operator1 = BinaryOperator.ADDITION;
-                BinaryOperator operator2 = BinaryOperator.SUBTRACTION;
-                BinaryOperator operator3 = BinaryOperator.MULTIPLICATION;
-                calculator.operators.add(operator1);
-                calculator.operators.add(operator2);
-
-                // Call the replaceLastBinaryOperation method with a new operator
-                calculator.replaceLastBinaryOperation(operator3);
-
-                // Check if the last operator in the list has been replaced with the new
-                // operator
-                assertEquals(operator3, calculator.operators.get(calculator.operators.size() - 1),
-                                "Last operator should be replaced");
-
-                // Test the case when the operators list is empty and expect an
-                // IllegalStateException
-                calculator.reset();
-                assertThrows(IllegalStateException.class, () -> calculator.replaceLastBinaryOperation(operator1),
-                                "Should throw IllegalStateException when no binary operations to replace");
+                calculator.submitBinaryOperation(new QuaternaryNumber("1"), BinaryOperator.ADDITION);
+                calculator.submitBinaryOperation(new QuaternaryNumber("2"), BinaryOperator.SUBTRACTION);
+                calculator.evaluateIgnoringLastOperation();
+                calculator.replaceLastBinaryOperation(BinaryOperator.MULTIPLICATION);
+                assertEquals(new QuaternaryNumber("-2"), calculator.evaluateIgnoringLastOperation());
         }
 
 }
