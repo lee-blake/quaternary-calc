@@ -117,4 +117,8 @@ public class VirtualDisplay {
             return displayValue.toString();
         }
     }
+
+    public boolean isBase10() {
+        return displayBase10;
+    }
 }
