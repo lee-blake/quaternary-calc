@@ -21,6 +21,7 @@ public class CalcGUI {
     private final JButton divButton = new JButton("/");
     private final JButton sqButton = new JButton("sq");
     private final JButton sqrtButton = new JButton("sqrt");
+
     private final JButton enterButton = new JButton("=");
     private final JButton flipButton = new JButton("swap base");
     private final JButton backspaceButton = new JButton("back");
@@ -28,30 +29,49 @@ public class CalcGUI {
 
     private final VirtualDisplay display = new VirtualDisplay();
 
-    private void moveVirtualDisplayToGUI() {
-
-        textArea1.setText(display.getDisplayString());
-
-        // set up button presses to append to text area
-
+    public CalcGUI() {
+        setupActionListenersForButtons();
+        setupDisplayAndBaseLabel();
+        setupWindowLayout();
     }
 
-    public void onEnterButtonPressed() {
+    private void setupActionListenersForButtons(){
+        zeroButton.addActionListener(e -> onZeroButtonPressed());
+        oneButton.addActionListener(e -> onOneButtonPressed());
+        twoButton.addActionListener(e -> onTwoButtonPressed());
+        threeButton.addActionListener(e -> onThreeButtonPressed());
+        addButton.addActionListener(e -> onAddButtonPressed());
+        subButton.addActionListener(e -> onSubButtonPressed());
+        mulButton.addActionListener(e -> onMulButtonPressed());
+        divButton.addActionListener(e -> onDivButtonPressed());
+        sqButton.addActionListener(e -> onSqButtonPressed());
+        sqrtButton.addActionListener(e -> onSqrtButtonPressed());
+        enterButton.addActionListener(e -> onEnterButtonPressed());
+        flipButton.addActionListener(e -> onFlipButtonPressed());
+        backspaceButton.addActionListener(e -> onBackspaceButtonPressed());
+        clearButton.addActionListener(e -> onClearButtonPressed());
+    }
+
+    private void moveVirtualDisplayToGUI() {
+        textArea1.setText(display.getDisplayString());
+    }
+
+    private void onEnterButtonPressed() {
         display.pressEnter();
         moveVirtualDisplayToGUI();
     }
 
-    public void onBackspaceButtonPressed() {
+    private void onBackspaceButtonPressed() {
         display.pressBackspace();
         moveVirtualDisplayToGUI();
     }
 
-    public void onClearButtonPressed() {
+    private void onClearButtonPressed() {
         display.clearAll();
         moveVirtualDisplayToGUI();
     }
 
-    public void onFlipButtonPressed() {
+    private void onFlipButtonPressed() {
         display.toggleBase();
         switchBaseLabel();
         moveVirtualDisplayToGUI();
@@ -66,83 +86,54 @@ public class CalcGUI {
         }
     }
 
-    public void onZeroButtonPressed() {
+    private void onZeroButtonPressed() {
         display.pressDigit("0");
         moveVirtualDisplayToGUI();
     }
 
-    public void onOneButtonPressed() {
+    private void onOneButtonPressed() {
         display.pressDigit("1");
         moveVirtualDisplayToGUI();
     }
 
-    public void onTwoButtonPressed() {
+    private void onTwoButtonPressed() {
         display.pressDigit("2");
         moveVirtualDisplayToGUI();
     }
 
-    public void onThreeButtonPressed() {
+    private void onThreeButtonPressed() {
         display.pressDigit("3");
         moveVirtualDisplayToGUI();
     }
 
-    public void onSqButtonPressed(){
+    private void onSqButtonPressed(){
         display.pressUnaryOperator(UnaryOperator.SQUARE);
         moveVirtualDisplayToGUI();
     }
 
-    public void onSqrtButtonPressed(){
+    private void onSqrtButtonPressed(){
         display.pressUnaryOperator(UnaryOperator.SQUARE_ROOT);
         moveVirtualDisplayToGUI();
     }
 
-    public void onAddButtonPressed(){
+    private void onAddButtonPressed(){
         display.pressBinaryOperator(BinaryOperator.ADDITION);
         moveVirtualDisplayToGUI();
     }
 
-    public void onSubButtonPressed(){
+    private void onSubButtonPressed(){
         display.pressBinaryOperator(BinaryOperator.SUBTRACTION);
         moveVirtualDisplayToGUI();
     }
 
-    public void onMulButtonPressed(){
+    private void onMulButtonPressed(){
         display.pressBinaryOperator(BinaryOperator.MULTIPLICATION);
         moveVirtualDisplayToGUI();
     }
 
-    public void onDivButtonPressed(){
+    private void onDivButtonPressed(){
         display.pressBinaryOperator(BinaryOperator.DIVISION);
         moveVirtualDisplayToGUI();
-    }
-
-    public CalcGUI() {
-        setupActionListenersForButtons();
-        setupDisplayAndBaseLabel();
-        setupWindowLayout();
-    }
-
-    private void setupWindowLayout(){
-        // Grid Layout Formats
-        GridLayout oneByOneGrid = new GridLayout(1,1);
-        GridLayout oneByTwoGrid = new GridLayout(1,2);
-        GridLayout oneByFourGrid = new GridLayout(1,4);
-        GridLayout twoByTwoGrid = new GridLayout(2,2);
-
-        // Format Display with Labels and Text Areas
-        JPanel textAreaPanel = new JPanel(twoByTwoGrid);
-        textAreaPanel.add(baseLabel);
-        textAreaPanel.add(textArea1);
-
-        JPanel buttonPanel = buildButtonPanel();
-
-        // Format the Window and Add Button Panels
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new BorderLayout());
-        frame.add(textAreaPanel, BorderLayout.NORTH);
-        frame.add(buttonPanel, BorderLayout.CENTER);
-        frame.setSize(600, 400);
-        frame.setVisible(true);
     }
 
     private void setupDisplayAndBaseLabel(){
@@ -150,34 +141,28 @@ public class CalcGUI {
         textArea1.setText("0");
         Font font2 = new Font("Verdana", Font.BOLD, 24);
         textArea1.setFont(font2);
-
         Font font1 = new Font("Verdana", Font.BOLD, 18);
         baseLabel.setFont(font1);
         baseLabel.setEditable(false);
         baseLabel.setBackground(null);
         baseLabel.setForeground(Color.BLACK);
-
         textArea1.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
     }
 
-    private void setupActionListenersForButtons(){
-        // Initialize number buttons
-        zeroButton.addActionListener(e -> onZeroButtonPressed());
-        oneButton.addActionListener(e -> onOneButtonPressed());
-        twoButton.addActionListener(e -> onTwoButtonPressed());
-        threeButton.addActionListener(e -> onThreeButtonPressed());
+    private void setupWindowLayout(){
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
+        frame.add(buildTextAreaPanel(), BorderLayout.NORTH);
+        frame.add(buildButtonPanel(), BorderLayout.CENTER);
+        frame.setSize(600, 400);
+        frame.setVisible(true);
+    }
 
-        // Initialize operator buttons
-        addButton.addActionListener(e -> onAddButtonPressed());
-        subButton.addActionListener(e -> onSubButtonPressed());
-        mulButton.addActionListener(e -> onMulButtonPressed());
-        divButton.addActionListener(e -> onDivButtonPressed());
-        sqButton.addActionListener(e -> onSqButtonPressed());
-        sqrtButton.addActionListener(e -> onSqrtButtonPressed());
-        enterButton.addActionListener(e -> onEnterButtonPressed());
-        flipButton.addActionListener(e -> onFlipButtonPressed());
-        backspaceButton.addActionListener(e -> onBackspaceButtonPressed());
-        clearButton.addActionListener(e -> onClearButtonPressed());
+    private JPanel buildTextAreaPanel() {
+        JPanel textAreaPanel = new JPanel(new GridLayout(2,2));
+        textAreaPanel.add(baseLabel);
+        textAreaPanel.add(textArea1);
+        return textAreaPanel;
     }
 
     private JPanel buildButtonPanel() {
