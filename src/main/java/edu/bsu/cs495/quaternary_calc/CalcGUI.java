@@ -8,53 +8,62 @@ import java.awt.event.ActionListener;
 
 public class CalcGUI {
 
+    JFrame frame = new JFrame("Quaternary Calculator");
+    JTextArea textArea1 = new JTextArea();
+
+
     private VirtualDisplay display = new VirtualDisplay();
 
-    public void enterButton() {
+    private void moveVirtualDisplayToGUI() {
+        textArea1.setText(display.getDisplayString());
+
+        // set up button presses to append to text area
+
+    }
+
+    public void onEnterButtonPressed() {
 
         display.pressEnter();
     }
 
-    public void backSpaceButton() {
-
+    public void onBackspaceButtonPressed() {
         display.pressBackspace();
+        moveVirtualDisplayToGUI();
     }
 
-    public void clearButton() {
+    public void onClearButtonPressed() {
 
         display.clearAll();
     }
 
-    public void flipButton() {
+    public void onFlipButtonPressed() {
 
         display.toggleBase();
     }
 
-    public void zeroButton() {
-
+    public void onZeroButtonPressed() {
         display.pressDigit("0");
+        moveVirtualDisplayToGUI();
     }
 
-    public void oneButton() {
-
+    public void onOneButtonPressed() {
         display.pressDigit("1");
+        moveVirtualDisplayToGUI();
     }
 
-    public void twoButton() {
-
+    public void onTwoButtonPressed() {
         display.pressDigit("2");
+        moveVirtualDisplayToGUI();
     }
 
-    public void threeButton() {
-
+    public void onThreeButtonPressed() {
         display.pressDigit("3");
+        moveVirtualDisplayToGUI();
     }
 
     public CalcGUI() {
-        // Initialize window and display text areas
-        JFrame frame = new JFrame("Quaternary Calculator");
-        JTextArea textArea1 = new JTextArea();
         textArea1.setForeground(Color.BLACK);
+        textArea1.setText("0");
 
         JTextArea textArea2 = new JTextArea("PlaceHolder Text");
         textArea2.setForeground(Color.LIGHT_GRAY);
@@ -72,9 +81,13 @@ public class CalcGUI {
 
         // Initialize number buttons
         JButton zeroButton = new JButton("0");
+        zeroButton.addActionListener(e -> onZeroButtonPressed());
         JButton oneButton = new JButton("1");
+        oneButton.addActionListener(e -> onOneButtonPressed());
         JButton twoButton = new JButton("2");
+        twoButton.addActionListener(e -> onTwoButtonPressed());
         JButton threeButton = new JButton("3");
+        threeButton.addActionListener(e -> onThreeButtonPressed());
 
         // Initialize operator buttons
         JButton addButton = new JButton("+");
@@ -84,6 +97,7 @@ public class CalcGUI {
         JButton sqButton = new JButton("sq");
         JButton sqrtButton = new JButton("sqrt");
         JButton enterButton = new JButton("enter");
+        enterButton.addActionListener(e -> onEnterButtonPressed());
         JButton flipButton = new JButton("base");
         JButton backspaceButton = new JButton("back");
         JButton clearButton = new JButton("clear");
@@ -155,18 +169,7 @@ public class CalcGUI {
         frame.setSize(600, 400);
         frame.setVisible(true);
 
-        // set up button presses to append to text area
-        zeroButton.addActionListener(e -> textArea1.append("0"));
-        oneButton.addActionListener(e -> textArea1.append("1"));
-        twoButton.addActionListener(e -> textArea1.append("2"));
-        threeButton.addActionListener(e -> textArea1.append("3"));
 
-        addButton.addActionListener(e -> textArea1.append(" + "));
-        subButton.addActionListener(e -> textArea1.append(" - "));
-        mulButton.addActionListener(e -> textArea1.append(" * "));
-        divButton.addActionListener(e -> textArea1.append(" / "));
-        sqButton.addActionListener(e -> textArea1.append(" sq "));
-        sqrtButton.addActionListener(e -> textArea1.append(" sqrt "));
 
         flipButton.addActionListener(e -> {
             // flip font colors
