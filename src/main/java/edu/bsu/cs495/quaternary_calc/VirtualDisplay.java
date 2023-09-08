@@ -13,7 +13,6 @@ public class VirtualDisplay {
     private boolean displayBase10 = false;
 
     private final QuaternaryCalculator calculator = new QuaternaryCalculator();
-    private boolean binaryOperatorInCalculator = false;
 
     public void pressDigit(String digit) {
         verifyDigitIsBase4(digit);
@@ -55,13 +54,12 @@ public class VirtualDisplay {
     }
 
     public void pressBinaryOperator(BinaryOperator operator) {
-        if (!lastKeyPressedWasBinaryOperator && !binaryOperatorInCalculator) {
+        if (!lastKeyPressedWasBinaryOperator) {
             clearTypedInputButKeepDisplay();
             calculator.submitBinaryOperation(displayValue, operator);
             lastKeyPressedWasBinaryOperator = true;
-            binaryOperatorInCalculator = true;
         }
-        else if (lastKeyPressedWasBinaryOperator) {
+        else {
             calculator.replaceLastBinaryOperation(operator);
         }
     }
@@ -75,7 +73,6 @@ public class VirtualDisplay {
         }
         calculator.reset();
         lastKeyPressedWasBinaryOperator = false;
-        binaryOperatorInCalculator = false;
     }
 
     public void pressBackspace() {
@@ -99,7 +96,6 @@ public class VirtualDisplay {
     public void clearAll() {
         clearEntry();
         calculator.reset();
-        binaryOperatorInCalculator = false;
     }
 
     public void toggleBase() {
