@@ -135,42 +135,18 @@ public class CalcGUI {
         textAreaPanel.add(textArea1);
 
         // Add Buttons to row1
-        JPanel row1 = new JPanel(oneByTwoGrid);
-        JPanel leftPanelRow1 = new JPanel(oneByTwoGrid);
-        leftPanelRow1.add(flipButton);
-        leftPanelRow1.add(clearButton);
+        JPanel row1 = buildRow1();
 
-        JPanel rightPanelRow1 = new JPanel(oneByOneGrid);
-        rightPanelRow1.add(backspaceButton);
-
-        row1.add(leftPanelRow1);
-        row1.add(rightPanelRow1);
 
         // Add Buttons to row2
-        JPanel row2 = new JPanel(oneByFourGrid);
-        row2.add(zeroButton);
-        row2.add(oneButton);
-        row2.add(twoButton);
-        row2.add(threeButton);
+        JPanel row2 = buildRow2();
+
 
         // Add Buttons to row3
-        JPanel row3 = new JPanel(oneByFourGrid);
-        row3.add(addButton);
-        row3.add(subButton);
-        row3.add(mulButton);
-        row3.add(divButton);
+        JPanel row3 = buildRow3();
 
         // Add Buttons to row4
-        JPanel row4 = new JPanel(oneByTwoGrid);
-        JPanel leftPanelRow4 = new JPanel(oneByTwoGrid);
-        leftPanelRow4.add(sqButton);
-        leftPanelRow4.add(sqrtButton);
-
-        JPanel rightPanelRow4 = new JPanel(oneByOneGrid);
-        rightPanelRow4.add(enterButton);
-
-        row4.add(leftPanelRow4);
-        row4.add(rightPanelRow4);
+        JPanel row4 = buildRow4();
 
         // Add Rows to Button Panel
         JPanel buttonPanel = new JPanel();
@@ -222,6 +198,47 @@ public class CalcGUI {
         flipButton.addActionListener(e -> onFlipButtonPressed());
         backspaceButton.addActionListener(e -> onBackspaceButtonPressed());
         clearButton.addActionListener(e -> onClearButtonPressed());
+    }
+
+    private JPanel buildRow1() {
+        JPanel row1 = new JPanel(new GridLayout(1,2));
+        JPanel leftPanelRow1 = new JPanel(new GridLayout(1,2));
+        leftPanelRow1.add(flipButton);
+        leftPanelRow1.add(clearButton);
+        JPanel rightPanelRow1 = new JPanel(new GridLayout(1,1));
+        rightPanelRow1.add(backspaceButton);
+        row1.add(leftPanelRow1);
+        row1.add(rightPanelRow1);
+        return row1;
+    }
+    private JPanel buildRow2() {
+        JPanel row2 = new JPanel(new GridLayout(1,4));
+        row2.add(zeroButton);
+        row2.add(oneButton);
+        row2.add(mulButton);
+        row2.add(divButton);
+        return row2;
+    }
+
+    private JPanel buildRow3() {
+        JPanel row3 = new JPanel(new GridLayout(1,4));
+        row3.add(twoButton);
+        row3.add(threeButton);
+        row3.add(addButton);
+        row3.add(subButton);
+        return row3;
+    }
+
+    private JPanel buildRow4() {
+        JPanel row4 = new JPanel(new GridLayout(1,2));
+        JPanel leftPanelRow4 = new JPanel(new GridLayout(1,2));
+        leftPanelRow4.add(sqButton);
+        leftPanelRow4.add(sqrtButton);
+        JPanel rightPanelRow4 = new JPanel(new GridLayout(1,1));
+        rightPanelRow4.add(enterButton);
+        row4.add(leftPanelRow4);
+        row4.add(rightPanelRow4);
+        return row4;
     }
 
     public static void main(String[] args) {
