@@ -1,0 +1,4 @@
+- [x] Representation backend
+- [x] GUI appearance
+- [ ] Split GUI action listener lambdas into their own methods
+- [ ] First iteration of middleware

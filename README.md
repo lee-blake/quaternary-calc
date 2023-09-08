@@ -20,6 +20,8 @@ Meeting 2:
 RB 369
 Jalen, Lee, Noah, Beethoven, Sean
 
+9-7-2023 Work pre-Friday
+Lee = Implement minimal middleware
 
 
 
