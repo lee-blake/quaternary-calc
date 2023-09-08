@@ -12,7 +12,7 @@ public class CalcGUI {
     JTextArea textArea1 = new JTextArea();
 
 
-    private VirtualDisplay display = new VirtualDisplay();
+    private final VirtualDisplay display = new VirtualDisplay();
 
     private void moveVirtualDisplayToGUI() {
         textArea1.setText(display.getDisplayString());
@@ -24,7 +24,6 @@ public class CalcGUI {
     public void onEnterButtonPressed() {
         display.pressEnter();
         moveVirtualDisplayToGUI();
-
     }
 
     public void onBackspaceButtonPressed() {
@@ -35,7 +34,6 @@ public class CalcGUI {
     public void onClearButtonPressed() {
         display.clearAll();
         moveVirtualDisplayToGUI();
-
     }
 
     public void onFlipButtonPressed() {
@@ -74,6 +72,26 @@ public class CalcGUI {
         moveVirtualDisplayToGUI();
     }
 
+    public void onAddButtonPressed(){
+        display.pressBinaryOperator(BinaryOperator.ADDITION);
+        moveVirtualDisplayToGUI();
+    }
+
+    public void onSubButtonPressed(){
+        display.pressBinaryOperator(BinaryOperator.SUBTRACTION);
+        moveVirtualDisplayToGUI();
+    }
+
+    public void onMulButtonPressed(){
+        display.pressBinaryOperator(BinaryOperator.MULTIPLICATION);
+        moveVirtualDisplayToGUI();
+    }
+
+    public void onDivButtonPressed(){
+        display.pressBinaryOperator(BinaryOperator.DIVISION);
+        moveVirtualDisplayToGUI();
+    }
+
     public CalcGUI() {
         textArea1.setForeground(Color.BLACK);
         textArea1.setText("0");
@@ -104,9 +122,13 @@ public class CalcGUI {
 
         // Initialize operator buttons
         JButton addButton = new JButton("+");
+        addButton.addActionListener(e -> onAddButtonPressed());
         JButton subButton = new JButton("-");
+        subButton.addActionListener(e -> onSubButtonPressed());
         JButton mulButton = new JButton("*");
+        mulButton.addActionListener(e -> onMulButtonPressed());
         JButton divButton = new JButton("/");
+        divButton.addActionListener(e -> onDivButtonPressed());
         JButton sqButton = new JButton("sq");
         sqButton.addActionListener(e -> onSqButtonPressed());
         JButton sqrtButton = new JButton("sqrt");
@@ -114,8 +136,11 @@ public class CalcGUI {
         JButton enterButton = new JButton("enter");
         enterButton.addActionListener(e -> onEnterButtonPressed());
         JButton flipButton = new JButton("base");
+        flipButton.addActionListener(e -> onFlipButtonPressed());
         JButton backspaceButton = new JButton("back");
+        backspaceButton.addActionListener(e -> onBackspaceButtonPressed());
         JButton clearButton = new JButton("clear");
+        clearButton.addActionListener(e -> onClearButtonPressed());
 
         // Grid Layout Formats
         GridLayout oneByOneGrid = new GridLayout(1,1);
@@ -227,7 +252,8 @@ public class CalcGUI {
         sqButton.addActionListener(disableOperatorButtons);
         sqrtButton.addActionListener(disableOperatorButtons);
 
-        final boolean[] enterPressed = { false };
+        final boolean[] enterPressed;
+        enterPressed = new boolean[]{ false };
 
         enterButton.addActionListener(e -> {
             textArea1.append(" = ");
