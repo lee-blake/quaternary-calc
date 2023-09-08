@@ -113,6 +113,8 @@ public class CalcGUI {
         baseLabel.setBackground(null);
         baseLabel.setForeground(Color.BLACK);
 
+        textArea1.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+
         // Initialize number buttons
         JButton zeroButton = new JButton("0");
         zeroButton.addActionListener(e -> onZeroButtonPressed());
