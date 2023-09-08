@@ -132,9 +132,9 @@ public class CalcGUI {
         mulButton.addActionListener(e -> onMulButtonPressed());
         JButton divButton = new JButton("/");
         divButton.addActionListener(e -> onDivButtonPressed());
-        JButton sqButton = new JButton("x²");
+        JButton sqButton = new JButton("sq");
         sqButton.addActionListener(e -> onSqButtonPressed());
-        JButton sqrtButton = new JButton("\u0221");
+        JButton sqrtButton = new JButton("sqrt");
         sqrtButton.addActionListener(e -> onSqrtButtonPressed());
         JButton enterButton = new JButton("=");
         enterButton.addActionListener(e -> onEnterButtonPressed());
