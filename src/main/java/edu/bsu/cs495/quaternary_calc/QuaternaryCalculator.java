@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class QuaternaryCalculator {
 
-    final ArrayList<QuaternaryNumber> operands = new ArrayList<>();
-    final ArrayList<BinaryOperator> operators = new ArrayList<>();
+    private final ArrayList<QuaternaryNumber> operands = new ArrayList<>();
+    private final ArrayList<BinaryOperator> operators = new ArrayList<>();
 
     // define operations in controller
     public void submitBinaryOperation(QuaternaryNumber leftOperand, BinaryOperator operator) {
@@ -61,10 +61,8 @@ public class QuaternaryCalculator {
         return performOperation(
                 subtotalIgnoringLastOperation,
                 lastOperator,
-                lastOperand
-        );
+                lastOperand);
     }
-
 
     public void replaceLastBinaryOperation(BinaryOperator optr) {
         if (operators.isEmpty()) {
