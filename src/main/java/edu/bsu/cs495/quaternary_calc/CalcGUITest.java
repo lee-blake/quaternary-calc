@@ -2,51 +2,37 @@ package edu.bsu.cs495.quaternary_calc;
 
 import javax.swing.*;
 import java.awt.*;
-//import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CalcGUITest {
 
     public CalcGUITest() {
-        // initializing window and buttons
+        // Initialize window and display text areas
         JFrame frame = new JFrame("Quaternary Calculator");
         JTextArea textArea1 = new JTextArea();
+        textArea1.setForeground(Color.BLACK);
+
         JTextArea textArea2 = new JTextArea("PlaceHolder Text");
+        textArea2.setForeground(Color.LIGHT_GRAY);
+        textArea2.setEditable(false); //This value can not be changed to avoid having someone type something in and mess it up
 
-        // changed it to make it so this value can't be changed because anyone
-        // could type something in and mess it up
-        textArea2.setEditable(false);
-
-        // "Base 10" and "Base 4" Text
         JTextArea base10Label = new JTextArea("Base 10:");
-        JTextArea base4Label = new JTextArea("Base 4:");
-
         base10Label.setEditable(false);
-        base4Label.setEditable(false);
-
         base10Label.setBackground(null);
-        base4Label.setBackground(null);
-
         base10Label.setForeground(Color.BLACK);
+
+        JTextArea base4Label = new JTextArea("Base 4:");
+        base4Label.setEditable(false);
+        base4Label.setBackground(null);
         base4Label.setForeground(Color.LIGHT_GRAY);
 
-        JPanel textAreaPanel = new JPanel(new GridLayout(2, 2));
-        textAreaPanel.add(base10Label);
-        textAreaPanel.add(textArea1);
-        textAreaPanel.add(base4Label);
-        textAreaPanel.add(textArea2);
-
-        // Set Colors
-        textArea1.setForeground(Color.BLACK);
-        textArea2.setForeground(Color.LIGHT_GRAY);
-
-        // initialize number buttons
+        // Initialize number buttons
         JButton zeroButton = new JButton("0");
         JButton oneButton = new JButton("1");
         JButton twoButton = new JButton("2");
         JButton threeButton = new JButton("3");
 
-        // initialize operator buttons
+        // Initialize operator buttons
         JButton addButton = new JButton("+");
         JButton subButton = new JButton("-");
         JButton mulButton = new JButton("*");
@@ -58,45 +44,66 @@ public class CalcGUITest {
         JButton backspaceButton = new JButton("back");
         JButton clearButton = new JButton("clear");
 
-        // initialize button panel
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+        // Grid Layout Formats
+        GridLayout oneByOneGrid = new GridLayout(1, 1);
+        GridLayout oneByTwoGrid = new GridLayout(1, 2);
+        GridLayout oneByFourGrid = new GridLayout(1, 4);
+        GridLayout twoByTwoGrid = new GridLayout(2, 2);
 
-        JPanel row1 = new JPanel(new GridLayout(1, 2));
-        JPanel leftPanelrow1 = new JPanel(new GridLayout(1, 2));
-        JPanel rightPanelrow1 = new JPanel(new GridLayout(1, 1));
-        leftPanelrow1.add(flipButton);
-        leftPanelrow1.add(clearButton);
-        rightPanelrow1.add(backspaceButton);
-        row1.add(leftPanelrow1);
-        row1.add(rightPanelrow1);
+        // Format Display with Labels and Text Areas
+        JPanel textAreaPanel = new JPanel(twoByTwoGrid);
+        textAreaPanel.add(base10Label);
+        textAreaPanel.add(textArea1);
+        textAreaPanel.add(base4Label);
+        textAreaPanel.add(textArea2);
 
-        JPanel row2 = new JPanel(new GridLayout(1, 4));
+        // Add Buttons to row1
+        JPanel row1 = new JPanel(oneByTwoGrid);
+        JPanel leftPanelRow1 = new JPanel(oneByTwoGrid);
+        leftPanelRow1.add(flipButton);
+        leftPanelRow1.add(clearButton);
+
+        JPanel rightPanelRow1 = new JPanel(oneByOneGrid);
+        rightPanelRow1.add(backspaceButton);
+
+        row1.add(leftPanelRow1);
+        row1.add(rightPanelRow1);
+
+        // Add Buttons to row2
+        JPanel row2 = new JPanel(oneByFourGrid);
         row2.add(zeroButton);
         row2.add(oneButton);
         row2.add(twoButton);
         row2.add(threeButton);
 
-        JPanel row3 = new JPanel(new GridLayout(1, 4));
+        // Add Buttons to row3
+        JPanel row3 = new JPanel(oneByFourGrid);
         row3.add(addButton);
         row3.add(subButton);
         row3.add(mulButton);
         row3.add(divButton);
 
-        JPanel row4 = new JPanel(new GridLayout(1, 2));
-        JPanel leftPanelrow4 = new JPanel(new GridLayout(1, 2));
-        JPanel rightPanelrow4 = new JPanel(new GridLayout(1, 1));
-        leftPanelrow4.add(sqButton);
-        leftPanelrow4.add(sqrtButton);
-        rightPanelrow4.add(enterButton);
-        row4.add(leftPanelrow4);
-        row4.add(rightPanelrow4);
+        // Add Buttons to row4
+        JPanel row4 = new JPanel(oneByTwoGrid);
+        JPanel leftPanelRow4 = new JPanel(oneByTwoGrid);
+        leftPanelRow4.add(sqButton);
+        leftPanelRow4.add(sqrtButton);
 
+        JPanel rightPanelRow4 = new JPanel(oneByOneGrid);
+        rightPanelRow4.add(enterButton);
+
+        row4.add(leftPanelRow4);
+        row4.add(rightPanelRow4);
+
+        // Add Rows to Button Panel
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
         buttonPanel.add(row1);
         buttonPanel.add(row2);
         buttonPanel.add(row3);
         buttonPanel.add(row4);
 
+        // Format the Window and Add Button Panels
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.add(textAreaPanel, BorderLayout.NORTH);
@@ -130,14 +137,15 @@ public class CalcGUITest {
 
         backspaceButton.addActionListener(e -> {
             String currentText = textArea1.getText();
-            if (currentText.length() > 0) {
+            if (!currentText.isEmpty()) {
                 textArea1.setText(currentText.substring(0, currentText.length() - 1));
             }
         });
 
         // Handle Disabling Operators:
 
-        JButton[] operatorButtons = { addButton, subButton, mulButton, divButton, sqButton, sqrtButton };
+        JButton[] operatorButtons = {addButton, subButton, mulButton, divButton, sqButton, sqrtButton};
+        JButton[] numberButtons = {zeroButton, oneButton, twoButton, threeButton};
 
         final boolean[] operatorPressed = { false };
 
@@ -166,10 +174,9 @@ public class CalcGUITest {
             for (JButton button : operatorButtons) {
                 button.setEnabled(false);
             }
-            zeroButton.setEnabled(false);
-            oneButton.setEnabled(false);
-            twoButton.setEnabled(false);
-            threeButton.setEnabled(false);
+            for (JButton button : numberButtons) {
+                button.setEnabled(false);
+            }
             backspaceButton.setEnabled(false);
             enterButton.setEnabled(false);
         });
