@@ -8,6 +8,7 @@ public class VirtualDisplay {
     private String keyboardBuffer = "0";
     private QuaternaryNumber displayValue = new QuaternaryNumber("0");
     private boolean displayBase10 = false;
+    private final QuaternaryCalculator calculator = new QuaternaryCalculator();
 
     public void typeDigit(String digit) {
         verifyDigitIsBase4(digit);
@@ -69,5 +70,12 @@ public class VirtualDisplay {
 
     public void typeEnter() {
         clearTypedInputButKeepDisplay();
+        displayValue = calculator.evaluate(displayValue);
+        calculator.reset();
+    }
+
+    public void typeBinaryOperator(BinaryOperator operator) {
+        clearTypedInputButKeepDisplay();
+        calculator.submitBinaryOperation(displayValue, operator);
     }
 }

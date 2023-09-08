@@ -194,6 +194,7 @@ public class TestVirtualDisplay {
     }
 
 
+
     @Test
     public void testTypeEnterAfterSingleNumberContinuesDisplayingThatNumber() {
         VirtualDisplay display = new VirtualDisplay();
@@ -218,4 +219,73 @@ public class TestVirtualDisplay {
         String expected = "2";
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    void testTypeEnterCalculationResetsAfterEnter() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("1");
+        display.typeBinaryOperator(BinaryOperator.ADDITION);
+        display.typeDigit("2");
+        display.typeEnter();
+        display.typeDigit("2");
+        display.typeBinaryOperator(BinaryOperator.MULTIPLICATION);
+        display.typeDigit("2");
+        display.typeEnter();
+        String actual = display.getDisplayString();
+        String expected = "10";
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void testTypeBinaryOperatorDoesAdditionCorrectly() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("1");
+        display.typeDigit("3");
+        display.typeBinaryOperator(BinaryOperator.ADDITION);
+        display.typeDigit("2");
+        display.typeEnter();
+        String actual = display.getDisplayString();
+        String expected = "21";
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testTypeBinaryOperatorDoesSubtractionCorrectly() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("2");
+        display.typeDigit("0");
+        display.typeBinaryOperator(BinaryOperator.SUBTRACTION);
+        display.typeDigit("3");
+        display.typeEnter();
+        String actual = display.getDisplayString();
+        String expected = "11";
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testTypeBinaryOperatorDoesMultiplicationCorrectly() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("2");
+        display.typeBinaryOperator(BinaryOperator.MULTIPLICATION);
+        display.typeDigit("3");
+        display.typeEnter();
+        String actual = display.getDisplayString();
+        String expected = "12";
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testTypeBinaryOperatorDoesDivisionCorrectly() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("1");
+        display.typeDigit("3");
+        display.typeBinaryOperator(BinaryOperator.DIVISION);
+        display.typeDigit("3");
+        display.typeEnter();
+        String actual = display.getDisplayString();
+        String expected = "2";
+        Assertions.assertEquals(expected, actual);
+    }
+
 }
