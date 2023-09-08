@@ -14,7 +14,14 @@ Noah and Beethoven = Calculator GUI
 Beethoven: Organize GUI buttons into rows
 Lee: Draft middleware specifications
 
+Meeting 2:
+9-5-2023
+9:00AM - 9:30AM
+RB 369
+Jalen, Lee, Noah, Beethoven, Sean
+
 9-7-2023 Work pre-Friday
 Lee = Implement minimal middleware
+
 
 
