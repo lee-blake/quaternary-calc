@@ -123,6 +123,18 @@ public class TestVirtualDisplay {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void testTypeUnaryOperatorTypingAdditionalDigitsImplicitlyClears() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.typeDigit("1");
+        display.typeDigit("0");
+        display.typeUnaryOperator(UnaryOperator.SQUARE_ROOT);
+        display.typeDigit("3");
+        String actual = display.getDisplayString();
+        String expected = "3";
+        Assertions.assertEquals(expected, actual);
+    }
+
 
     @Test
     public void testClearEntryClearsEntry() {

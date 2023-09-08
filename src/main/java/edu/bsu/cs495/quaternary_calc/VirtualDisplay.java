@@ -6,11 +6,13 @@ import java.util.regex.Pattern;
 public class VirtualDisplay {
 
     private String keyboardBuffer = "0";
+    private QuaternaryNumber displayValue = new QuaternaryNumber("0");
     private boolean displayBase10 = false;
 
     public void typeDigit(String digit) {
         verifyDigitIsBase4(digit);
         keyboardBuffer += digit;
+        updateDisplayValue();
     }
 
     private void verifyDigitIsBase4(String possibleDigit) {
@@ -21,11 +23,15 @@ public class VirtualDisplay {
         }
     }
 
+    private void updateDisplayValue() {
+        displayValue = new QuaternaryNumber(keyboardBuffer);
+    }
+
     public String getDisplayString() {
         if (displayBase10) {
-            return new QuaternaryNumber(keyboardBuffer).toDecimalForm();
+            return displayValue.toDecimalForm();
         } else {
-            return new QuaternaryNumber(keyboardBuffer).toString();
+            return displayValue.toString();
         }
     }
 
@@ -35,14 +41,20 @@ public class VirtualDisplay {
 
     public void typeUnaryOperator(UnaryOperator operator) {
         if (operator == UnaryOperator.SQUARE) {
-            keyboardBuffer = new QuaternaryNumber(keyboardBuffer).squared().toString();
+            displayValue = displayValue.squared();
         } else {
-            keyboardBuffer = new QuaternaryNumber(keyboardBuffer).squareRoot().toString();
+            displayValue = displayValue.squareRoot();
         }
+        clearTypedInputButKeepDisplay();
+    }
+
+    private void clearTypedInputButKeepDisplay() {
+        keyboardBuffer = "0";
     }
 
     public void clearEntry() {
         keyboardBuffer = "0";
+        updateDisplayValue();
     }
 
     public void typeBackspace() {
@@ -52,5 +64,6 @@ public class VirtualDisplay {
         } else {
             keyboardBuffer = keyboardBuffer.substring(0, bufferLength - 1);
         }
+        updateDisplayValue();
     }
 }
