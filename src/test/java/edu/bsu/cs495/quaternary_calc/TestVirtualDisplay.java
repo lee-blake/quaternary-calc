@@ -299,4 +299,28 @@ public class TestVirtualDisplay {
         String expected = "12";
         Assertions.assertEquals(expected, actual);
     }
+
+
+    @Test
+    public void testClearAllClearsDisplay() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.pressDigit("2");
+        display.clearAll();
+        String actual = display.getDisplayString();
+        String expected = "0";
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testClearAllClearsCalculator() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.pressDigit("2");
+        display.pressBinaryOperator(BinaryOperator.MULTIPLICATION);
+        display.clearAll();
+        display.pressDigit("3");
+        display.pressEnter();
+        String actual = display.getDisplayString();
+        String expected = "3";
+        Assertions.assertEquals(expected, actual);
+    }
 }

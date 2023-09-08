@@ -94,4 +94,10 @@ public class VirtualDisplay {
             return displayValue.toString();
         }
     }
+
+    public void clearAll() {
+        clearEntry();
+        calculator.reset();
+        binaryOperatorInCalculator = false;
+    }
 }
