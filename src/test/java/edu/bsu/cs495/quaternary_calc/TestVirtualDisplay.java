@@ -340,6 +340,28 @@ public class TestVirtualDisplay {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void testPressBinaryOperatorChainingGivesCorrectSubtotalAfterEachOperator() {
+        VirtualDisplay display = new VirtualDisplay();
+        display.pressDigit("2");
+        display.pressBinaryOperator(BinaryOperator.MULTIPLICATION);
+        Assertions.assertEquals("2", display.getDisplayString());
+        display.pressDigit("1");
+        display.pressDigit("0");
+        display.pressBinaryOperator(BinaryOperator.SUBTRACTION);
+        Assertions.assertEquals("20", display.getDisplayString());
+        display.pressDigit("2");
+        display.pressBinaryOperator(BinaryOperator.DIVISION);
+        Assertions.assertEquals("12", display.getDisplayString());
+        display.pressDigit("3");
+        display.pressBinaryOperator(BinaryOperator.ADDITION);
+        Assertions.assertEquals("2", display.getDisplayString());
+        display.pressDigit("1");
+        display.pressDigit("3");
+        display.pressBinaryOperator(BinaryOperator.SUBTRACTION);
+        Assertions.assertEquals("21", display.getDisplayString());
+    }
+
 
     @Test
     public void testClearAllClearsDisplay() {
