@@ -55,8 +55,9 @@ public class VirtualDisplay {
 
     public void pressBinaryOperator(BinaryOperator operator) {
         if (!lastKeyPressedWasBinaryOperator) {
-            clearTypedInputButKeepDisplay();
             calculator.submitBinaryOperation(displayValue, operator);
+            displayValue = calculator.evaluateIgnoringLastOperation();
+            clearTypedInputButKeepDisplay();
             lastKeyPressedWasBinaryOperator = true;
         }
         else {
