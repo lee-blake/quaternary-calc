@@ -41,7 +41,8 @@ operates only with integer arithmetic - division and square roots are rounded do
 
 ![Screenshot of the calculator layout](docs/calculator_layout.png)
 
-Figure 1: The calculator in base 4 with the number "23" typed in
+Figure 1: The calculator in base 4 with the number "23" typed in. The outer window appearance may differ slightly based
+one desktop environment.
 
 - The top left text area displays the current base.
 - The top right text area initially shows the number the user is inputting. It is also where the results of computations
