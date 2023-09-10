@@ -1,5 +1,6 @@
 # Description
 
+
 QuaternaryCalc is a calculator implemented in quaternary (base 4). In this base, the only digits are
 0 through 3. Currently, the calculator implements six of the most common calculator operations in
 this base, with the option to switch the display into decimal (base 10). This calculator currently
