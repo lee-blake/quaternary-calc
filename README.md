@@ -1,4 +1,18 @@
-QuaternaryCalc 9
+# Description
+
+# Build Instructions
+
+## Dependencies
+
+## Building
+
+# Features
+
+# Manual
+
+# Course Meeting & Assignment Record
+
+Group: QuaternaryCalc 9
 
 Meeting 1:
 9-1-2023
@@ -6,7 +20,7 @@ Meeting 1:
 LB 404
 Jalen, Lee, Noah, Beethoven
 
-9-1-2023 Initial Task Distribution: 
+9-1-2023 Initial Task Distribution:
 Jalen and Lee = Representation Backend
 Noah and Beethoven = Calculator GUI
 
