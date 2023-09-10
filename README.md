@@ -40,6 +40,7 @@ operates only with integer arithmetic - division and square roots are rounded do
 ## Basic Layout
 
 ![Screenshot of the calculator layout](docs/calculator_layout.png)
+
 Figure 1: The calculator in base 4 with the number "23" typed in
 
 - The top left text area displays the current base.
