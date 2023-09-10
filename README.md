@@ -4,7 +4,17 @@
 
 ## Dependencies
 
-## Building
+- Java 17+ (untested but may work on earlier versions)
+- Gradle 8+
+- IntelliJ 2023.1.4+
+
+## Building & Running
+
+1. In IntelliJ, choose "File > New > Project from Version Control...".
+2. Paste in the URL GitHub displays for this repository under "<> Code".
+3. Wait for the clone and build to complete.
+4. Ensure you are on the branch "master" and have updated.
+5. Run the class CalcGUI to run the calculator.
 
 # Features
 
