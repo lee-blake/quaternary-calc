@@ -50,6 +50,11 @@ operates only with integer arithmetic - division and square roots are rounded do
   a computation.
 
 ## Display of Bases
+- The base is initially set to base 4.
+- Even when displaying in base 10, all input still occurs in base 4. This can lead to sudden unexpected
+  changes to the displayed value if it is showing base 10 while the user is typing.
+- The base can be switched at any time with the "base" key. This will not interrupt or impact the
+  computation.
 
 ## Inputting Numbers
 
