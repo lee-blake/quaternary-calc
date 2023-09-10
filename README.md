@@ -57,6 +57,11 @@ one desktop environment.
 
 ## Display of Bases
 
+![Screenshot of the number 11 in decimal](docs/calculator_hard_to_distinguish_bases.png)
+
+Figure 2: The same number in decimal, rendered as 11. It can sometimes be difficult to distinguish the base without the
+indication in the top left.
+
 - The base is initially set to base 4.
 - Even when displaying in base 10, all input still occurs in base 4. This can lead to sudden unexpected
   changes to the displayed value if it is showing base 10 while the user is typing.
