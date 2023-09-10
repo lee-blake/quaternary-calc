@@ -38,6 +38,16 @@ operates only with integer arithmetic - division and square roots are rounded do
 # Manual
 
 ## Basic Layout
+- The top left text area displays the current base.
+- The top right text area initially shows the number the user is inputting. It is also where the results of computations
+  will appear. Note that this always displays in the base currently selected, as indicated in the top left.
+- The top row of buttons relate to the display. "base" changes the displayed base between base 4 and
+  base 10. "clear all" clears not only the display, but the previous values and operations. "backspace"
+  functions as a backspace - erasing a single digit input by the user.
+- The next two rows are the digits and the basic operations. The digits are grouped together to minimize cursor
+  travel distance.
+- The last row has both the unary operations square (sq) and square root (sqrt), as well as the enter key (=) to finish
+  a computation.
 
 ## Display of Bases
 
