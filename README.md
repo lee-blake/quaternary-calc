@@ -38,6 +38,10 @@ operates only with integer arithmetic - division and square roots are rounded do
 # Manual
 
 ## Basic Layout
+
+![Screenshot of the calculator layout](docs/calculator_layout.png)
+Figure 1: The calculator in base 4 with the number "23" typed in
+
 - The top left text area displays the current base.
 - The top right text area initially shows the number the user is inputting. It is also where the results of computations
   will appear. Note that this always displays in the base currently selected, as indicated in the top left.
