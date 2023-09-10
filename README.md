@@ -37,6 +37,16 @@ operates only with integer arithmetic - division and square roots are rounded do
 
 # Manual
 
+## Basic Layout
+
+## Display of Bases
+
+## Inputting Numbers
+
+## Inputting Operations
+
+## Troubleshooting
+
 # Course Meeting & Assignment Record
 
 Group: QuaternaryCalc 9
