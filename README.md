@@ -50,6 +50,7 @@ operates only with integer arithmetic - division and square roots are rounded do
   a computation.
 
 ## Display of Bases
+
 - The base is initially set to base 4.
 - Even when displaying in base 10, all input still occurs in base 4. This can lead to sudden unexpected
   changes to the displayed value if it is showing base 10 while the user is typing.
@@ -57,7 +58,9 @@ operates only with integer arithmetic - division and square roots are rounded do
   computation.
 
 ## Inputting Numbers
+
 - Numbers may be input in base 4 via the four digit keys.
+- Currently, none of the digit keys respond to the keyboard.
 - There is currently no way to input in base 10.
 - There is no need to retype the result of a computation that appears after one presses "=". If one presses
   an operator following "=", the value display will be used as the left operand.
@@ -66,6 +69,7 @@ operates only with integer arithmetic - division and square roots are rounded do
 
 ## Inputting Operations
 
+- Currently, none of the operator keys respond to the keyboard.
 - An operator should be pressed once one is satisfied with the number in the display. Once it has been pressed, there
   is no changing the left operand.
 - There is no erasing or undoing of operators. However, if one presses a standard operator and then a second standard
@@ -83,6 +87,12 @@ operates only with integer arithmetic - division and square roots are rounded do
   because that is the result of 1 + 2. See the [Features](#features) section for limitations.
 
 ## Troubleshooting
+
+- If in doubt, check the display base. It can sometimes be difficult to discern between the bases.
+- If NaN shows as the result of a calculation, the result of the calculation was not a real number. Currently, this
+  only occurs when performing a square root on a negative or when dividing by zero.
+- No exceptions should display in the shell during normal operation. If one does occur, this is due to a mistake in
+  the code.
 
 # Course Meeting & Assignment Record
 
