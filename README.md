@@ -57,8 +57,30 @@ operates only with integer arithmetic - division and square roots are rounded do
   computation.
 
 ## Inputting Numbers
+- Numbers may be input in base 4 via the four digit keys.
+- There is currently no way to input in base 10.
+- There is no need to retype the result of a computation that appears after one presses "=". If one presses
+  an operator following "=", the value display will be used as the left operand.
+- There is no need to clear the result of a computation that appears after one presses "=". Pressing any
+  digit will reset the display to that digit.
 
 ## Inputting Operations
+
+- An operator should be pressed once one is satisfied with the number in the display. Once it has been pressed, there
+  is no changing the left operand.
+- There is no erasing or undoing of operators. However, if one presses a standard operator and then a second standard
+  operator, the second will replace the first. Thus, one can correct any bad inputs by simply pressing the correct
+  operator. Note that because of operator chaining, this will not work once one has pressed any digit, unary operator,
+  or
+  backspace.
+- Unary operators will immediately give their result when they are pressed. This will not interrupt the computation of
+  the four basic operators. Thus, one can enter "2 * 3<sup>2</sup> =" and get the expected result of 102 (18 in
+  decimal).
+- Standard operators can be chained without pressing enter. For example, one can type "1 + 2 + 4 =" to get the result
+  of that entire computation. On any operator press, it will be as if the user pressed enter first: the display will
+  show
+  the running total of the computation. For example, on that second addition operator press, the display will read 3
+  because that is the result of 1 + 2. See the [Features](#features) section for limitations.
 
 ## Troubleshooting
 
