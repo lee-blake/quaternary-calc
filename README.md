@@ -99,6 +99,10 @@ indication in the top left.
 
 ## Troubleshooting
 
+![Screenshot of the calculator displaying "NaN"](docs/calculator_nan.png)
+
+Figure 3: The state of the calculator after dividing by 0.
+
 - If in doubt, check the display base. It can sometimes be difficult to discern between the bases.
 - If NaN shows as the result of a calculation, the result of the calculation was not a real number. Currently, this
   only occurs when performing a square root on a negative or when dividing by zero.
