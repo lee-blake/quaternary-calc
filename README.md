@@ -1,5 +1,10 @@
 # Description
 
+QuaternaryCalc is a calculator implemented in quaternary (base 4). In this base, the only digits are
+0 through 3. Currently, the calculator implements six of the most common calculator operations in
+this base, with the option to switch the display into decimal (base 10). This calculator currently
+operates only with integer arithmetic - division and square roots are rounded down.
+
 # Build Instructions
 
 ## Dependencies
@@ -17,6 +22,18 @@
 5. Run the class CalcGUI to run the calculator.
 
 # Features
+
+- Operator replacement: If you press the wrong binary operation (addition, subtraction, multiplication,
+  or division), you can fix your mistake by immediately pressing the correct one.
+
+- Operator chaining: Instead of having to press enter after every binary operation, one can immediately
+  type the next operator. This will both show the subtotal and continue the computation. Note that like most
+  other calculators, this does *not* support the PEMDAS order of operations and is instead just shorthand to
+  avoid having to press enter.
+
+- Autoclearing of the display: Results of a computation will disappear immediately upon pressing digits. Additionally,
+  one can use the result of the computation as the right operand simply by not pressing any digits before pressing
+  enter.
 
 # Manual
 
