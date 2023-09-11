@@ -43,7 +43,7 @@ operates only with integer arithmetic - division and square roots are rounded do
 ![Screenshot of the calculator layout](docs/calculator_layout.png)
 
 Figure 1: The calculator in base 4 with the number "23" typed in. The outer window appearance may differ slightly based
-one desktop environment.
+on desktop environment.
 
 - The top left text area displays the current base.
 - The top right text area initially shows the number the user is inputting. It is also where the results of computations
@@ -93,10 +93,9 @@ indication in the top left.
   the four basic operators. Thus, one can enter "2 * 3<sup>2</sup> =" and get the expected result of 102 (18 in
   decimal).
 - Standard operators can be chained without pressing enter. For example, one can type "1 + 2 + 4 =" to get the result
-  of that entire computation. On any operator press, it will be as if the user pressed enter first: the display will
-  show
-  the running total of the computation. For example, on that second addition operator press, the display will read 3
-  because that is the result of 1 + 2. See the [Features](#features) section for limitations.
+  of that entire computation. On any operator press, it will be as if the user pressed enter ("=") first: the display 
+  will show the running total of the computation. For example, on that second addition operator press, the display will
+  read 3 because that is the result of 1 + 2. See the [Features](#features) section for limitations.
 
 ## Troubleshooting
 
@@ -109,6 +108,11 @@ Figure 3: The state of the calculator after dividing by 0.
   only occurs when performing a square root on a negative or when dividing by zero.
 - No exceptions should display in the shell during normal operation. If one does occur, this is due to a mistake in
   the code.
+- In the result of an error or a display of "NaN", simply press a number to reset the display and begin entering the
+  first number before an operation
+- If for whatever reason the calculator stops behaving or responding for any manner, please allow the program a few
+  seconds to buffer, as we cannot predict the effects different devices may have on the program. In the extreme case that
+  the program will not respond after waiting, please close the program and rerun the CalcGUI again.
 
 # Course Meeting & Assignment Record
 
